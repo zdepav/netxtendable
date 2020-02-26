@@ -114,6 +114,9 @@ namespace Netxtendable {
             return enumerable.Where(item => !predicate(item));
         }
         
+        public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> enumerable) =>
+            enumerable.SelectMany(e => e);
+
         #nullable disable
 
         public static Dictionary<K, V> ToDictionary<K, V>(this IEnumerable<(K, V)> enumerable) =>
