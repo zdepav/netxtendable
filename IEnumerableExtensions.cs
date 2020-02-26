@@ -115,8 +115,10 @@ namespace Netxtendable {
         }
         
         #nullable disable
+
         public static Dictionary<K, V> ToDictionary<K, V>(this IEnumerable<(K, V)> enumerable) =>
             enumerable.ToDictionary(pair => pair.Item1, pair => pair.Item2);
+
         #nullable restore
 
     }
