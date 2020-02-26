@@ -114,6 +114,9 @@ namespace Netxtendable {
             return enumerable.Where(item => !predicate(item));
         }
         
+        public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T> enumerable) =>
+            enumerable.Where(item => !(item is null));
+
         public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> enumerable) =>
             enumerable.SelectMany(e => e);
 

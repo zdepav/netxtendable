@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -6,9 +8,6 @@ using System.Text.RegularExpressions;
 namespace Netxtendable {
 
     public static class StringExtensions {
-
-        private static readonly Regex
-            lineEndingRegex = new Regex(@"\n|\u2028|\r\n?", RegexOptions.Compiled);
 
         public static Match Match(this string str, Regex regex) =>
             regex.Match(str);
@@ -85,11 +84,32 @@ namespace Netxtendable {
         public static string LineEndingsToLs(this string str) =>
             ConvertLineEndings(str, "\u2028");
 
-        public static string[] SplitLines(this string str) =>
-            lineEndingRegex.Split(str);
+        public static IEnumerable<string> EnumerateLines(this string str, bool skipEmpty = false) {
+            var buffer = new StringBuilder();
+            for (var i = 0; i < str.Length; i++) {
+                switch (str[i]) {
+                    case '\r':
+                    case '\n':
+                    case '\u2028':
+                        if (buffer.Length > 0) {
+                            yield return buffer.ToString();
+                            buffer.Clear();
+                        } else if (!skipEmpty) {
+                            yield return "";
+                        }
+                        if (i + 1 < str.Length && str[i] == '\r' && str[i + 1] == '\n') {
+                            ++i;
+                        }
+                        break;
+                    default:
+                        buffer.Append(str[i]);
+                        break;
+                }
+            }
+        }
 
-        public static string[] Split(this string str) =>
-            lineEndingRegex.Split(str.Split());
+        public static string[] SplitLines(this string str) =>
+            EnumerateLines(str).ToArray();
 
         public static string ExpandHtmlEntities(this string str) =>
             WebUtility.HtmlDecode(str);
