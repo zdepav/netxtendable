@@ -21,6 +21,12 @@ namespace Netxtendable {
         public static string RegexReplace(this string str, string regex, string replacement) =>
             Regex.Replace(str, regex, replacement);
 
+        public static string Replace(this string str, Regex regex, MatchEvaluator replacement) =>
+            regex.Replace(str, replacement);
+
+        public static string RegexReplace(this string str, string regex, MatchEvaluator replacement) =>
+            Regex.Replace(str, regex, replacement);
+
         public static string? Find(this string str, Regex regex) {
             var m = regex.Match(str);
             return m.Success ? m.Value : null;
@@ -84,7 +90,84 @@ namespace Netxtendable {
         public static string LineEndingsToLs(this string str) =>
             ConvertLineEndings(str, "\u2028");
 
-        public static IEnumerable<string> EnumerateLines(this string str, bool skipEmpty = false) {
+        public static IEnumerable<string> LazySplit(this string str, char delimiter, bool includeEmpty = true) {
+            if (str is null) {
+                throw new ArgumentNullException(nameof(str));
+            }
+            var buffer = new StringBuilder();
+            var prevWasDelimiter = false;
+            foreach (var c in str) {
+                if (c == delimiter) {
+                    if (buffer.Length > 0) {
+                        yield return buffer.ToString();
+                        buffer.Clear();
+                    } else if (includeEmpty) {
+                        yield return "";
+                    }
+                    prevWasDelimiter = true;
+                } else {
+                    buffer.Append(c);
+                    prevWasDelimiter = false;
+                }
+            }
+            if (buffer.Length > 0) {
+                yield return buffer.ToString();
+            } else if (prevWasDelimiter && includeEmpty) {
+                yield return "";
+            }
+        }
+
+        public static IEnumerable<string> LazySplit(this string str, char[] delimiters, bool includeEmpty = true) {
+            if (str is null) {
+                throw new ArgumentNullException(nameof(str));
+            }
+            var buffer = new StringBuilder();
+            var prevWasDelimiter = false;
+            foreach (var c in str) {
+                if (delimiters.Contains(c)) {
+                    if (buffer.Length > 0) {
+                        yield return buffer.ToString();
+                        buffer.Clear();
+                    } else if (includeEmpty) {
+                        yield return "";
+                    }
+                    prevWasDelimiter = true;
+                } else {
+                    buffer.Append(c);
+                    prevWasDelimiter = false;
+                }
+            }
+            if (buffer.Length > 0) {
+                yield return buffer.ToString();
+            } else if (prevWasDelimiter && includeEmpty) {
+                yield return "";
+            }
+        }
+
+        public static IEnumerable<string> LazySplit(this string str, string delimiter, bool includeEmpty = true) {
+            if (str is null) {
+                throw new ArgumentNullException(nameof(str));
+            }
+            if (delimiter is null) {
+                throw new ArgumentNullException(nameof(delimiter));
+            }
+            int start = 0, end;
+            while ((end = str.IndexOf(delimiter, StringComparison.Ordinal)) >= 0) {
+                if (end > start) {
+                    yield return str[start..end];
+                } else if (includeEmpty) {
+                    yield return "";
+                }
+                start = end + delimiter.Length;
+            }
+            if (start < str.Length) {
+                yield return str[start..str.Length];
+            } else if (includeEmpty) {
+                yield return "";
+            }
+        }
+
+        public static IEnumerable<string> EnumerateLines(this string str, bool includeEmpty = true) {
             var buffer = new StringBuilder();
             for (var i = 0; i < str.Length; i++) {
                 switch (str[i]) {
@@ -94,7 +177,7 @@ namespace Netxtendable {
                         if (buffer.Length > 0) {
                             yield return buffer.ToString();
                             buffer.Clear();
-                        } else if (!skipEmpty) {
+                        } else if (includeEmpty) {
                             yield return "";
                         }
                         if (i + 1 < str.Length && str[i] == '\r' && str[i + 1] == '\n') {
@@ -108,15 +191,15 @@ namespace Netxtendable {
             }
         }
 
-        public static string[] SplitLines(this string str) =>
-            EnumerateLines(str).ToArray();
+        public static string[] SplitLines(this string str, bool includeEmpty = true) =>
+            EnumerateLines(str, includeEmpty).ToArray();
 
         public static string ExpandHtmlEntities(this string str) =>
             WebUtility.HtmlDecode(str);
 
         public static string CollapseWhitespace(this string str) {
             if (str is null) {
-                throw  new ArgumentNullException(nameof(str));
+                throw new ArgumentNullException(nameof(str));
             }
             var sb = new StringBuilder();
             str = str.TrimEnd();
@@ -202,4 +285,5 @@ namespace Netxtendable {
             decimal.TryParse(str, out var value) ? value : @default;
 
     }
+
 }
