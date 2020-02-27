@@ -85,6 +85,24 @@ namespace Netxtendable {
             item7 = t.Item7;
         }
 
+        public static T[] ToArray<T>(this Tuple<T, T> t) =>
+            new[] { t.Item1, t.Item2 };
+
+        public static T[] ToArray<T>(this Tuple<T, T, T> t) =>
+            new[] { t.Item1, t.Item2, t.Item3 };
+
+        public static T[] ToArray<T>(this Tuple<T, T, T, T> t) =>
+            new[] { t.Item1, t.Item2, t.Item3, t.Item4 };
+
+        public static T[] ToArray<T>(this Tuple<T, T, T, T, T> t) =>
+            new[] { t.Item1, t.Item2, t.Item3, t.Item4, t.Item5 };
+
+        public static T[] ToArray<T>(this Tuple<T, T, T, T, T, T> t) =>
+            new[] { t.Item1, t.Item2, t.Item3, t.Item4, t.Item5, t.Item6 };
+
+        public static T[] ToArray<T>(this Tuple<T, T, T, T, T, T, T> t) =>
+            new[] { t.Item1, t.Item2, t.Item3, t.Item4, t.Item5, t.Item6, t.Item7 };
+
         public static IList<T> ToList<T>(this Tuple<T, T> t) =>
             new List<T> { t.Item1, t.Item2 };
 
