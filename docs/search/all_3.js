@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['getmatched_8',['GetMatched',['../class_netxtendable_1_1_string_extensions.html#a9a2826ce5d5d4edc7f5d97f8b186338c',1,'Netxtendable.StringExtensions.GetMatched(this string str, Regex regex)'],['../class_netxtendable_1_1_string_extensions.html#a8302e7db1b4203642e1163ea915c145c',1,'Netxtendable.StringExtensions.GetMatched(this string str, string pattern)']]],
+  ['getmatchedgroup_9',['GetMatchedGroup',['../class_netxtendable_1_1_string_extensions.html#abcf55b315f54138a03b6debf93a6ebd7',1,'Netxtendable.StringExtensions.GetMatchedGroup(this string str, Regex regex, int groupId)'],['../class_netxtendable_1_1_string_extensions.html#a3cace78c3c3083fd68d27047fc5adb93',1,'Netxtendable.StringExtensions.GetMatchedGroup(this string str, string pattern, int groupId)'],['../class_netxtendable_1_1_string_extensions.html#a022d1efccdec06d99af0a79c8fe181a8',1,'Netxtendable.StringExtensions.GetMatchedGroup(this string str, Regex regex, string groupName)'],['../class_netxtendable_1_1_string_extensions.html#a657191e7d19c33811d16dc23f79366ac',1,'Netxtendable.StringExtensions.GetMatchedGroup(this string str, string pattern, string groupName)']]]
+];

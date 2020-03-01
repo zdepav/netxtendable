@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Netxtendable {
 
+    /// <summary>Class with extension methods for <see cref="Tuple"/></summary>
     public static class TupleExtensions {
 
         public static void Deconstruct<T1, T2>(this Tuple<T1, T2> t, out T1 item1, out T2 item2) {
@@ -139,11 +140,9 @@ namespace Netxtendable {
         public static ISet<T> ToSet<T>(this Tuple<T, T, T, T, T, T, T> t) =>
             new HashSet<T> { t.Item1, t.Item2, t.Item3, t.Item4, t.Item5, t.Item6, t.Item7 };
 
-        #nullable disable
-
         public static IDictionary<K, V> ToDictionary<K, V>(
             this Tuple<(K, V), (K, V)> t
-        ) {
+        ) where K : notnull {
             return new Dictionary<K, V> {
                 { t.Item1.Item1, t.Item1.Item2 },
                 { t.Item2.Item1, t.Item2.Item2 },
@@ -152,7 +151,7 @@ namespace Netxtendable {
 
         public static IDictionary<K, V> ToDictionary<K, V>(
             this Tuple<(K, V), (K, V), (K, V)> t
-        ) {
+        ) where K : notnull {
             return new Dictionary<K, V> {
                 { t.Item1.Item1, t.Item1.Item2 },
                 { t.Item2.Item1, t.Item2.Item2 },
@@ -162,7 +161,7 @@ namespace Netxtendable {
 
         public static IDictionary<K, V> ToDictionary<K, V>(
             this Tuple<(K, V), (K, V), (K, V), (K, V)> t
-        ) {
+        ) where K : notnull {
             return new Dictionary<K, V> {
                 { t.Item1.Item1, t.Item1.Item2 },
                 { t.Item2.Item1, t.Item2.Item2 },
@@ -173,7 +172,7 @@ namespace Netxtendable {
 
         public static IDictionary<K, V> ToDictionary<K, V>(
             this Tuple<(K, V), (K, V), (K, V), (K, V), (K, V)> t
-        ) {
+        ) where K : notnull {
             return new Dictionary<K, V> {
                 { t.Item1.Item1, t.Item1.Item2 },
                 { t.Item2.Item1, t.Item2.Item2 },
@@ -185,7 +184,7 @@ namespace Netxtendable {
 
         public static IDictionary<K, V> ToDictionary<K, V>(
             this Tuple<(K, V), (K, V), (K, V), (K, V), (K, V), (K, V)> t
-        ) {
+        ) where K : notnull {
             return new Dictionary<K, V> {
                 { t.Item1.Item1, t.Item1.Item2 },
                 { t.Item2.Item1, t.Item2.Item2 },
@@ -198,7 +197,7 @@ namespace Netxtendable {
 
         public static IDictionary<K, V> ToDictionary<K, V>(
             this Tuple<(K, V), (K, V), (K, V), (K, V), (K, V), (K, V), (K, V)> t
-        ) {
+        ) where K : notnull {
             return new Dictionary<K, V> {
                 { t.Item1.Item1, t.Item1.Item2 },
                 { t.Item2.Item1, t.Item2.Item2 },
@@ -209,8 +208,51 @@ namespace Netxtendable {
                 { t.Item7.Item1, t.Item7.Item2 },
             };
         }
+        
+        public static IEnumerable<T> Enumerate<T>(this Tuple<T, T> t) {
+            yield return t.Item1;
+            yield return t.Item2;
+        }
 
-        #nullable restore
+        public static IEnumerable<T> Enumerate<T>(this Tuple<T, T, T> t) {
+            yield return t.Item1;
+            yield return t.Item2;
+            yield return t.Item3;
+        }
+
+        public static IEnumerable<T> Enumerate<T>(this Tuple<T, T, T, T> t) {
+            yield return t.Item1;
+            yield return t.Item2;
+            yield return t.Item3;
+            yield return t.Item4;
+        }
+
+        public static IEnumerable<T> Enumerate<T>(this Tuple<T, T, T, T, T> t) {
+            yield return t.Item1;
+            yield return t.Item2;
+            yield return t.Item3;
+            yield return t.Item4;
+            yield return t.Item5;
+        }
+
+        public static IEnumerable<T> Enumerate<T>(this Tuple<T, T, T, T, T, T> t) {
+            yield return t.Item1;
+            yield return t.Item2;
+            yield return t.Item3;
+            yield return t.Item4;
+            yield return t.Item5;
+            yield return t.Item6;
+        }
+
+        public static IEnumerable<T> Enumerate<T>(this Tuple<T, T, T, T, T, T, T> t) {
+            yield return t.Item1;
+            yield return t.Item2;
+            yield return t.Item3;
+            yield return t.Item4;
+            yield return t.Item5;
+            yield return t.Item6;
+            yield return t.Item7;
+        }
 
     }
 

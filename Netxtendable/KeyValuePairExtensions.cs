@@ -2,9 +2,14 @@ using System.Collections.Generic;
 
 namespace Netxtendable {
 
+    /// <summary>Class with extension methods for <see cref="KeyValuePair{TKey, TValue}"/></summary>
     public static class KeyValuePairExtensions {
 
-        public static void Deconstruct<K, V>(this KeyValuePair<K, V> pair, out K key, out V value) {
+        public static void Deconstruct<TKey, TValue>(
+            this KeyValuePair<TKey, TValue> pair,
+            out TKey key,
+            out TValue value
+        ) {
             key = pair.Key;
             value = pair.Value;
         }
