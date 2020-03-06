@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['jointostring_3c_20t_20_3e_13',['JoinToString&lt; T &gt;',['../class_netxtendable_1_1_i_enumerable_extensions.html#a0667d306924dae46b8d223b3edfdfbe3',1,'Netxtendable.IEnumerableExtensions.JoinToString&lt; T &gt;(this IEnumerable&lt; T &gt; enumerable, string delimiter)'],['../class_netxtendable_1_1_i_enumerable_extensions.html#acffa92b7295a0b673bf9d84d4048b803',1,'Netxtendable.IEnumerableExtensions.JoinToString&lt; T &gt;(this IEnumerable&lt; T &gt; enumerable, char delimiter)'],['../class_netxtendable_1_1_i_enumerable_extensions.html#a0bb73ec96e1f8bc7e2f8cff9f643f93e',1,'Netxtendable.IEnumerableExtensions.JoinToString&lt; T &gt;(this IEnumerable&lt; T &gt; enumerable)']]]
+  ['ienumerableextensions_19',['IEnumerableExtensions',['../class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html',1,'Netxtendable::Collections']]],
+  ['ilistextensions_20',['IListExtensions',['../class_netxtendable_1_1_collections_1_1_i_list_extensions.html',1,'Netxtendable::Collections']]],
+  ['int32extensions_21',['Int32Extensions',['../class_netxtendable_1_1_text_1_1_int32_extensions.html',1,'Netxtendable::Text']]],
+  ['ismatch_22',['IsMatch',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a2f7a671c1731e8cca4a80b4ed5c12fec',1,'Netxtendable.Text.StringExtensions.IsMatch(this string str, Regex regex)'],['../class_netxtendable_1_1_text_1_1_string_extensions.html#a61da478f29a267df8986bfb7e0836927',1,'Netxtendable.Text.StringExtensions.IsMatch(this string str, string pattern)']]]
 ];

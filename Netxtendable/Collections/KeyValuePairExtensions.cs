@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace Netxtendable {
+namespace Netxtendable.Collections {
 
-    /// <summary>Class with extension methods for <see cref="KeyValuePair{TKey, TValue}"/></summary>
+/// <summary>Class with extension methods for <see cref="KeyValuePair{TKey, TValue}"/>.</summary>
     public static class KeyValuePairExtensions {
 
         public static void Deconstruct<TKey, TValue>(
