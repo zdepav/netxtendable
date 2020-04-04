@@ -277,7 +277,5 @@ namespace Netxtendable.Collections {
                 : throw new InvalidOperationException(
                     "At least 7 items were expected, 6 were found.");
         }
-
     }
-
 }

@@ -28,7 +28,7 @@ namespace Netxtendable.Text {
         /// match.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
         public static Match Match(this string str, Regex regex) =>
             regex != null ? regex.Match(str) : throw new ArgumentNullException(nameof(regex));
@@ -43,7 +43,7 @@ namespace Netxtendable.Text {
         /// match.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null.
         /// </exception>
         public static Match Match(this string str, string pattern) =>
             Regex.Match(str, pattern);
@@ -58,7 +58,7 @@ namespace Netxtendable.Text {
         /// objects found by the search.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
         public static IEnumerable<Match> Matches(this string str, Regex regex) =>
             regex != null ? regex.Matches(str) : throw new ArgumentNullException(nameof(regex));
@@ -73,7 +73,7 @@ namespace Netxtendable.Text {
         /// <see cref="System.Text.RegularExpressions.Match"/> objects found by the search.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null.
         /// </exception>
         public static IEnumerable<Match> Matches(this string str, string pattern) =>
             Regex.Matches(str, pattern);
@@ -88,7 +88,7 @@ namespace Netxtendable.Text {
         /// <returns>Resulting string.</returns>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/>, <paramref name="regex"/> or
-        /// <paramref name="replacement"/> is null. 
+        /// <paramref name="replacement"/> is null.
         /// </exception>
         public static string Replace(this string str, Regex regex, string replacement) =>
             regex != null
@@ -107,7 +107,7 @@ namespace Netxtendable.Text {
         /// <returns>Resulting string.</returns>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/>, <paramref name="regex"/> or
-        /// <paramref name="evaluator"/> is null. 
+        /// <paramref name="evaluator"/> is null.
         /// </exception>
         public static string Replace(this string str, Regex regex, MatchEvaluator evaluator) =>
             regex != null
@@ -124,7 +124,7 @@ namespace Netxtendable.Text {
         /// <returns>Resulting string.</returns>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/>, <paramref name="pattern"/> or
-        /// <paramref name="replacement"/> is null. 
+        /// <paramref name="replacement"/> is null.
         /// </exception>
         public static string RegexReplace(this string str, string pattern, string replacement) =>
             Regex.Replace(str, pattern, replacement);
@@ -141,7 +141,7 @@ namespace Netxtendable.Text {
         /// <returns>Resulting string.</returns>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/>, <paramref name="pattern"/> or
-        /// <paramref name="evaluator"/> is null. 
+        /// <paramref name="evaluator"/> is null.
         /// </exception>
         public static string RegexReplace(
             this string str,
@@ -159,7 +159,7 @@ namespace Netxtendable.Text {
         /// <param name="regex">Regular expression to search for.</param>
         /// <returns>Array of strings.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
         public static string[] Split(this string str, Regex regex) =>
             regex != null ? regex.Split(str) : throw new ArgumentNullException(nameof(regex));
@@ -172,7 +172,7 @@ namespace Netxtendable.Text {
         /// <param name="pattern">Regular expression to search for.</param>
         /// <returns>Array of strings.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null.
         /// </exception>
         public static string[] RegexSplit(this string str, string pattern) =>
             Regex.Split(str, pattern);
@@ -187,7 +187,7 @@ namespace Netxtendable.Text {
         /// </param>
         /// <returns>Matched part of the input string or <paramref name="default"/>.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
         [return: NotNullIfNotNull("default")]
         public static string? GetMatched(this string str, Regex regex, string? @default = null) =>
@@ -207,7 +207,7 @@ namespace Netxtendable.Text {
         /// </param>
         /// <returns>Matched part of the input string or null.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null.
         /// </exception>
         [return: NotNullIfNotNull("default")]
         public static string? GetMatched(
@@ -232,7 +232,7 @@ namespace Netxtendable.Text {
         /// Specified group of the matched part of <paramref name="str"/> or null.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
         [return: NotNullIfNotNull("default")]
         public static string? GetMatchedGroup(
@@ -262,7 +262,7 @@ namespace Netxtendable.Text {
         /// Specified group of the matched part of <paramref name="str"/> or null.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null.
         /// </exception>
         [return: NotNullIfNotNull("default")]
         public static string? GetMatchedGroup(
@@ -291,7 +291,7 @@ namespace Netxtendable.Text {
         /// </returns>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/>, <paramref name="regex"/> or
-        /// <paramref name="groupName"/> is null. 
+        /// <paramref name="groupName"/> is null.
         /// </exception>
         [return: NotNullIfNotNull("default")]
         public static string? GetMatchedGroup(
@@ -322,7 +322,7 @@ namespace Netxtendable.Text {
         /// </returns>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/>, <paramref name="pattern"/> or
-        /// <paramref name="groupName"/> is null. 
+        /// <paramref name="groupName"/> is null.
         /// </exception>
         [return: NotNullIfNotNull("default")]
         public static string? GetMatchedGroup(
@@ -343,7 +343,7 @@ namespace Netxtendable.Text {
         /// <param name="regex">Regular expression to search for.</param>
         /// <returns>true if the regular expression finds a match, false otherwise.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
         public static bool IsMatch(this string str, Regex regex) =>
             regex != null ? regex.IsMatch(str) : throw new ArgumentNullException(nameof(regex));
@@ -355,7 +355,7 @@ namespace Netxtendable.Text {
         /// <param name="pattern">Regular expression to search for.</param>
         /// <returns>true if the regular expression finds a match, false otherwise.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null.
         /// </exception>
         public static bool IsMatch(this string str, string pattern) =>
             Regex.IsMatch(str, pattern);
@@ -467,7 +467,7 @@ namespace Netxtendable.Text {
         /// </param>
         /// <returns>IEnumerable with segments of the input string.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> is null. 
+        /// Thrown when <paramref name="str"/> is null.
         /// </exception>
         public static IEnumerable<string> LazySplit(
             this string str,
@@ -512,7 +512,7 @@ namespace Netxtendable.Text {
         /// </param>
         /// <returns>IEnumerable with segments of the input string.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="delimiters"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="delimiters"/> is null.
         /// </exception>
         public static IEnumerable<string> LazySplit(
             this string str,
@@ -560,10 +560,10 @@ namespace Netxtendable.Text {
         /// </param>
         /// <returns>IEnumerable with segments of the input string.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/> or <paramref name="delimiter"/> is null. 
+        /// Thrown when <paramref name="str"/> or <paramref name="delimiter"/> is null.
         /// </exception>
         /// <exception cref="ArgumentException">
-        /// Thrown when <paramref name="delimiter"/> is empty. 
+        /// Thrown when <paramref name="delimiter"/> is empty.
         /// </exception>
         public static IEnumerable<string> LazySplit(
             this string str,
@@ -606,7 +606,7 @@ namespace Netxtendable.Text {
         /// </param>
         /// <returns>IEnumerable with segments of the input string.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/>  is null. 
+        /// Thrown when <paramref name="str"/>  is null.
         /// </exception>
         public static IEnumerable<string> EnumerateLines(
             this string str,
@@ -651,7 +651,7 @@ namespace Netxtendable.Text {
         /// </param>
         /// <returns>IEnumerable with segments of the input string.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="str"/>  is null. 
+        /// Thrown when <paramref name="str"/>  is null.
         /// </exception>
         public static string[] SplitLines(this string str, bool includeEmpty = true) =>
             EnumerateLines(str, includeEmpty).ToArray();
@@ -690,14 +690,14 @@ namespace Netxtendable.Text {
             }
             return sb.ToString();
         }
-        
+
         /// <summary>Repeats a given string.</summary>
         /// <param name="str">String to repeat.</param>
         /// <param name="count">Repetition count, must be non-negative.</param>
         /// <returns>
         /// Empty string when <paramref name="count"/> == 0, <paramref name="str"/> when
         /// <paramref name="count"/> == 1, otherwise ,<paramref name="str"/> repeated
-        /// <paramref name="count"/> times. 
+        /// <paramref name="count"/> times.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/> is null.
@@ -1208,7 +1208,5 @@ namespace Netxtendable.Text {
                 ? v
                 : @default;
         }
-
     }
-
 }

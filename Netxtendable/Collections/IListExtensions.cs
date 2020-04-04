@@ -208,7 +208,5 @@ namespace Netxtendable.Collections {
             item6 = list[5];
             item7 = list[6];
         }
-
     }
-
 }

@@ -5,7 +5,7 @@ namespace Netxtendable.Text {
 
     /// <summary>Class with extension methods for <see cref="Int32"/>.</summary>
     public static class Int32Extensions {
-        
+
         /// <summary>
         /// Converts <paramref name="i"/> to ordinal (e.g. "2nd", "45th", etc.).
         /// </summary>
@@ -38,11 +38,11 @@ namespace Netxtendable.Text {
             "ten", "eleven", "twelve", "thirteen", "fourteen",
             "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
         };
-        
+
         private static readonly string[] textNumbersTens = {
             "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"
         };
-        
+
         private static readonly (long upperBound, int divisor, int mod, string divisorString)[]
             textNumberLevels = {
                 (1_000, 100, 10, "hundred"),
@@ -50,7 +50,7 @@ namespace Netxtendable.Text {
                 (1_000_000_000, 1_000_000, 1_000, "million"),
                 (int.MaxValue + 1L, 1_000_000_000, 1_000, "billion")
             };
-        
+
         private static void ToWordsUnsigned(this int i, StringBuilder buffer) {
             if (i < 20) {
                 buffer.Append(textNumbers[i]);
@@ -81,7 +81,7 @@ namespace Netxtendable.Text {
                 }
             }
         }
-        
+
         /// <summary>
         /// Converts <paramref name="i"/> to words (e.g. "two hundred thirty four").
         /// </summary>
@@ -104,12 +104,12 @@ namespace Netxtendable.Text {
             "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth",
             "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth"
         };
-        
+
         private static readonly string[] longOrdinalsTens = {
             "twentieth", "thirtieth", "fourtieth", "fiftieth",
             "sixty", "seventieth", "eightieth", "ninetieth"
         };
-        
+
         private static void ToWordsOrdinalUnsigned(this int i, StringBuilder buffer) {
             if (i < 20) {
                 buffer.Append(longOrdinals[i]);
@@ -134,7 +134,7 @@ namespace Netxtendable.Text {
                 }
             }
         }
-        
+
         /// <summary>
         /// Converts <paramref name="i"/> to ordinal words (e.g. "two hundred thirty second").
         /// </summary>
@@ -150,7 +150,5 @@ namespace Netxtendable.Text {
             }
             return buffer.ToString();
         }
-
     }
-
 }

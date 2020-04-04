@@ -1,7 +1,7 @@
 using System.Text;
 
 namespace Netxtendable.Text {
-    
+
     /// <summary>Class with extension methods for <see cref="Encoding"/>.</summary>
     public static class EncodingExtensions {
 
@@ -14,7 +14,13 @@ namespace Netxtendable.Text {
         /// <param name="byteIndex">Index of first decoded byte in <paramref name="bytes"/>.</param>
         /// <param name="byteCount">Number of bytes to decode.</param>
         /// <returns>true if the conversion was successful, false otherwise</returns>
-        public static bool TryGetString(this Encoding enc, byte[] bytes, out string str, int byteIndex = 0, int byteCount = 0) {
+        public static bool TryGetString(
+            this Encoding enc,
+            byte[] bytes,
+            out string str,
+            int byteIndex = 0,
+            int byteCount = 0
+        ) {
             str = "";
             if (enc is null || bytes is null ||
                 byteIndex < 0 || byteIndex >= bytes.Length ||
@@ -42,7 +48,13 @@ namespace Netxtendable.Text {
         /// <param name="byteIndex">Index of first decoded byte in <paramref name="bytes"/>.</param>
         /// <param name="byteCount">Number of bytes to decode.</param>
         /// <returns>true if the conversion was successful, false otherwise</returns>
-        public static bool TryGetChars(this Encoding enc, byte[] bytes, out char[]? str, int byteIndex = 0, int byteCount = 0) {
+        public static bool TryGetChars(
+            this Encoding enc,
+            byte[] bytes,
+            out char[]? str,
+            int byteIndex = 0,
+            int byteCount = 0
+        ) {
             str = null;
             if (enc is null || bytes is null ||
                 byteIndex < 0 || byteIndex >= bytes.Length ||
@@ -57,7 +69,5 @@ namespace Netxtendable.Text {
                 return false;
             }
         }
-
     }
-
 }

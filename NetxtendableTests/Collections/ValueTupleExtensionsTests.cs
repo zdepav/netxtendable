@@ -1,5 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -156,12 +155,18 @@ namespace Netxtendable.Collections.Tests {
 
         [TestMethod]
         public void ToDictionary_2_Test() {
-            var ints = ((1, 11), (2, 12)).ToDictionary();
+            var ints = (
+                (1, 11),
+                (2, 12)
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<int, int>(1, 11),
                 new KeyValuePair<int, int>(2, 12)
             }, ints);
-            var strings = (("1", "11"), ("2", "12")).ToDictionary();
+            var strings = (
+                ("1", "11"),
+                ("2", "12")
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<string, string>("1", "11"),
                 new KeyValuePair<string, string>("2", "12")
@@ -170,13 +175,21 @@ namespace Netxtendable.Collections.Tests {
 
         [TestMethod]
         public void ToDictionary_3_Test() {
-            var ints = ((1, 11), (2, 12), (3, 13)).ToDictionary();
+            var ints = (
+                (1, 11),
+                (2, 12),
+                (3, 13)
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<int, int>(1, 11),
                 new KeyValuePair<int, int>(2, 12),
                 new KeyValuePair<int, int>(3, 13)
             }, ints);
-            var strings = (("1", "11"), ("2", "12"), ("3", "13")).ToDictionary();
+            var strings = (
+                ("1", "11"),
+                ("2", "12"),
+                ("3", "13")
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<string, string>("1", "11"),
                 new KeyValuePair<string, string>("2", "12"),
@@ -186,14 +199,24 @@ namespace Netxtendable.Collections.Tests {
 
         [TestMethod]
         public void ToDictionary_4_Test() {
-            var ints = ((1, 11), (2, 12), (3, 13), (4, 14)).ToDictionary();
+            var ints = (
+                (1, 11),
+                (2, 12),
+                (3, 13),
+                (4, 14)
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<int, int>(1, 11),
                 new KeyValuePair<int, int>(2, 12),
                 new KeyValuePair<int, int>(3, 13),
                 new KeyValuePair<int, int>(4, 14)
             }, ints);
-            var strings = (("1", "11"), ("2", "12"), ("3", "13"), ("4", "14")).ToDictionary();
+            var strings = (
+                ("1", "11"),
+                ("2", "12"),
+                ("3", "13"),
+                ("4", "14")
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<string, string>("1", "11"),
                 new KeyValuePair<string, string>("2", "12"),
@@ -204,7 +227,13 @@ namespace Netxtendable.Collections.Tests {
 
         [TestMethod]
         public void ToDictionary_5_Test() {
-            var ints = ((1, 11), (2, 12), (3, 13), (4, 14), (5, 15)).ToDictionary();
+            var ints = (
+                (1, 11),
+                (2, 12),
+                (3, 13),
+                (4, 14),
+                (5, 15)
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<int, int>(1, 11),
                 new KeyValuePair<int, int>(2, 12),
@@ -212,7 +241,13 @@ namespace Netxtendable.Collections.Tests {
                 new KeyValuePair<int, int>(4, 14),
                 new KeyValuePair<int, int>(5, 15)
             }, ints);
-            var strings = (("1", "11"), ("2", "12"), ("3", "13"), ("4", "14"), ("5", "15")).ToDictionary();
+            var strings = (
+                ("1", "11"),
+                ("2", "12"),
+                ("3", "13"),
+                ("4", "14"),
+                ("5", "15")
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<string, string>("1", "11"),
                 new KeyValuePair<string, string>("2", "12"),
@@ -224,7 +259,14 @@ namespace Netxtendable.Collections.Tests {
 
         [TestMethod]
         public void ToDictionary_6_Test() {
-            var ints = ((1, 11), (2, 12), (3, 13), (4, 14), (5, 15), (6, 16)).ToDictionary();
+            var ints = (
+                (1, 11),
+                (2, 12),
+                (3, 13),
+                (4, 14),
+                (5, 15),
+                (6, 16)
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<int, int>(1, 11),
                 new KeyValuePair<int, int>(2, 12),
@@ -233,7 +275,14 @@ namespace Netxtendable.Collections.Tests {
                 new KeyValuePair<int, int>(5, 15),
                 new KeyValuePair<int, int>(6, 16)
             }, ints);
-            var strings = (("1", "11"), ("2", "12"), ("3", "13"), ("4", "14"), ("5", "15"), ("6", "16")).ToDictionary();
+            var strings = (
+                ("1", "11"),
+                ("2", "12"),
+                ("3", "13"),
+                ("4", "14"),
+                ("5", "15"),
+                ("6", "16")
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<string, string>("1", "11"),
                 new KeyValuePair<string, string>("2", "12"),
@@ -246,7 +295,15 @@ namespace Netxtendable.Collections.Tests {
 
         [TestMethod]
         public void ToDictionary_7_Test() {
-            var ints = ((1, 11), (2, 12), (3, 13), (4, 14), (5, 15), (6, 16), (7, 17)).ToDictionary();
+            var ints = (
+                (1, 11),
+                (2, 12),
+                (3, 13),
+                (4, 14),
+                (5, 15),
+                (6, 16),
+                (7, 17)
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<int, int>(1, 11),
                 new KeyValuePair<int, int>(2, 12),
@@ -256,7 +313,15 @@ namespace Netxtendable.Collections.Tests {
                 new KeyValuePair<int, int>(6, 16),
                 new KeyValuePair<int, int>(7, 17)
             }, ints);
-            var strings = (("1", "11"), ("2", "12"), ("3", "13"), ("4", "14"), ("5", "15"), ("6", "16"), ("7", "17")).ToDictionary();
+            var strings = (
+                ("1", "11"),
+                ("2", "12"),
+                ("3", "13"),
+                ("4", "14"),
+                ("5", "15"),
+                ("6", "16"),
+                ("7", "17")
+            ).ToDictionary();
             CollectionAssert.AreEquivalent(new[] {
                 new KeyValuePair<string, string>("1", "11"),
                 new KeyValuePair<string, string>("2", "12"),
@@ -315,7 +380,5 @@ namespace Netxtendable.Collections.Tests {
             var strings = ("1", "2", "3", "4", "5", "6", "7").Enumerate().ToArray();
             CollectionAssert.AreEqual(new[] { "1", "2", "3", "4", "5", "6", "7" }, strings);
         }
-
     }
-
 }

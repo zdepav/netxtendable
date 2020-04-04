@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Netxtendable.Collections {
-    
+
     /// <summary>Class with extension methods for <see cref="IEnumerable{T}"/>.</summary>
     public static partial class IEnumerableExtensions {
 
@@ -487,7 +487,5 @@ namespace Netxtendable.Collections {
         ) where TKey : notnull {
             return enumerable.ToDictionary(pair => pair.Item1, pair => pair.Item2);
         }
-
     }
-
 }
