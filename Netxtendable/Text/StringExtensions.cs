@@ -612,6 +612,9 @@ namespace Netxtendable.Text {
             this string str,
             bool includeEmpty = true
         ) {
+            if (str is null) {
+                throw new ArgumentNullException(nameof(str));
+            }
             var buffer = new StringBuilder();
             for (var i = 0; i < str.Length; i++) {
                 switch (str[i]) {

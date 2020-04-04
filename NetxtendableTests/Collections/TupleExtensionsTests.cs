@@ -18,9 +18,11 @@ namespace Netxtendable.Collections.Tests {
             var (s1, s2) = Tuple.Create("1", "2");
             Assert.AreEqual("1", s1);
             Assert.AreEqual("2", s2);
-            Assert.ThrowsException<ArgumentNullException>(() => {
-                var (a1, a2) = (Tuple<int, int>)null;
-            });
+            Assert.ThrowsException<ArgumentNullException>(
+                () => {
+                   var (a, b) = (Tuple<int, int>)null;
+                }
+            );
         }
 
         [TestMethod]
@@ -33,9 +35,11 @@ namespace Netxtendable.Collections.Tests {
             Assert.AreEqual("1", s1);
             Assert.AreEqual("2", s2);
             Assert.AreEqual("3", s3);
-            Assert.ThrowsException<ArgumentNullException>(() => {
-                var (a1, a2, a3) = (Tuple<int, int, int>)null;
-            });
+            Assert.ThrowsException<ArgumentNullException>(
+                () => {
+                   var (a, b, c) = (Tuple<int, int, int>)null;
+                }
+            );
         }
 
         [TestMethod]
@@ -50,9 +54,11 @@ namespace Netxtendable.Collections.Tests {
             Assert.AreEqual("2", s2);
             Assert.AreEqual("3", s3);
             Assert.AreEqual("4", s4);
-            Assert.ThrowsException<ArgumentNullException>(() => {
-                var (a1, a2, a3, a4) = (Tuple<int, int, int, int>)null;
-            });
+            Assert.ThrowsException<ArgumentNullException>(
+                () => {
+                   var (a, b, c, d) = (Tuple<int, int, int, int>)null;
+                }
+            );
         }
 
         [TestMethod]
@@ -69,9 +75,11 @@ namespace Netxtendable.Collections.Tests {
             Assert.AreEqual("3", s3);
             Assert.AreEqual("4", s4);
             Assert.AreEqual("5", s5);
-            Assert.ThrowsException<ArgumentNullException>(() => {
-                var (a1, a2, a3, a4, a5) = (Tuple<int, int, int, int, int>)null;
-            });
+            Assert.ThrowsException<ArgumentNullException>(
+                () => {
+                   var (a, b, c, d, e) = (Tuple<int, int, int, int, int>)null;
+                }
+            );
         }
 
         [TestMethod]
@@ -90,9 +98,11 @@ namespace Netxtendable.Collections.Tests {
             Assert.AreEqual("4", s4);
             Assert.AreEqual("5", s5);
             Assert.AreEqual("6", s6);
-            Assert.ThrowsException<ArgumentNullException>(() => {
-                var (a1, a2, a3, a4, a5, a6) = (Tuple<int, int, int, int, int, int>)null;
-            });
+            Assert.ThrowsException<ArgumentNullException>(
+                () => {
+                   var (a, b, c, d, e, f) = (Tuple<int, int, int, int, int, int>)null;
+                }
+            );
         }
 
         [TestMethod]
@@ -113,9 +123,11 @@ namespace Netxtendable.Collections.Tests {
             Assert.AreEqual("5", s5);
             Assert.AreEqual("6", s6);
             Assert.AreEqual("7", s7);
-            Assert.ThrowsException<ArgumentNullException>(() => {
-                var (a1, a2, a3, a4, a5, a6, a7) = (Tuple<int, int, int, int, int, int, int>)null;
-            });
+            Assert.ThrowsException<ArgumentNullException>(
+                () => {
+                   var (a, b, c, d, e, f, g) = (Tuple<int, int, int, int, int, int, int>)null;
+                }
+            );
         }
 
         [TestMethod]

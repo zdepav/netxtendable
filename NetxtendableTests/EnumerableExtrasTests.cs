@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,6 +17,11 @@ namespace Netxtendable.Tests {
                     .Generate(() => i++)
                     .Take(21)
                     .ToArray()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => EnumerableExtras.Generate<int>(null)
+                                      .GetEnumerator()
+                                      .MoveNext()
             );
         }
 
@@ -56,6 +62,11 @@ namespace Netxtendable.Tests {
                     .Take(5)
                     .ToArray()
             );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => EnumerableExtras.Generate(0, null)
+                                      .GetEnumerator()
+                                      .MoveNext()
+            );
         }
 
         [TestMethod]
@@ -76,6 +87,11 @@ namespace Netxtendable.Tests {
                     .Generate("", "a", (a, b) => a + b)
                     .Take(8)
                     .ToArray()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => EnumerableExtras.Generate(0, 0, null)
+                                      .GetEnumerator()
+                                      .MoveNext()
             );
         }
 
@@ -99,6 +115,11 @@ namespace Netxtendable.Tests {
                     .Generate("A", "B", "C", (a, b, c) => a + c + b)
                     .Take(9)
                     .ToArray()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => EnumerableExtras.Generate(0, 0, 0, null)
+                                      .GetEnumerator()
+                                      .MoveNext()
             );
         }
 

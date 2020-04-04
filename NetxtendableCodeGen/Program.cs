@@ -856,13 +856,15 @@ namespace NetxtendableCodeGen {
                 for (var i = 1; i <= n; ++i) {
                     sw.WriteLine($"            Assert.AreEqual(\"{i}\", s{i});");
                 }
-                sw.WriteLine("            Assert.ThrowsException<ArgumentNullException>(() => {");
-                sw.Write("                var (");
-                sw.Write(string.Join(", ", Enumerable.Range(1, n).Select(i => $"a{i}")));
+                sw.WriteLine("            Assert.ThrowsException<ArgumentNullException>(");
+                sw.WriteLine("                () => {");
+                sw.Write("                   var (");
+                sw.Write(string.Join(", ", Enumerable.Range('a', n).Select(i => (char)i)));
                 sw.Write(") = (Tuple<");
                 sw.Write(string.Join(", ", Enumerable.Repeat("int", n)));
                 sw.WriteLine(">)null;");
-                sw.WriteLine("            });");
+                sw.WriteLine("                }");
+                sw.WriteLine("            );");
                 sw.WriteLine("        }");
             }
             GenereateTupleToCollectionMethodsTests(sw, false);

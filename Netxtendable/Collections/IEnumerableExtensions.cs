@@ -487,5 +487,30 @@ namespace Netxtendable.Collections {
         ) where TKey : notnull {
             return enumerable.ToDictionary(pair => pair.Item1, pair => pair.Item2);
         }
+
+        /// <summary>
+        /// Pairs each but last item in <paramref name="enumerable"/> with the item after it.
+        /// </summary>
+        /// <typeparam name="T">Type of items in <paramref name="enumerable"/>.</typeparam>
+        /// <param name="enumerable"><see cref="IEnumerable{T}"/> to zip with itself.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="enumerable"/> is null.
+        /// </exception>
+        public static IEnumerable<(T, T)> ZipWithNext<T>(this IEnumerable<T> enumerable) {
+            if (enumerable is null) {
+                throw new ArgumentNullException(nameof(enumerable));
+            }
+            using var enumerator = enumerable.GetEnumerator();
+            if (!enumerator.MoveNext()) {
+                yield break;
+            }
+            var first = enumerator.Current;
+            while (enumerator.MoveNext()) {
+                var second = enumerator.Current;
+                yield return (first, second);
+                first = second;
+            }
+        }
     }
 }

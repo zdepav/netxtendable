@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -27,7 +28,10 @@ namespace Netxtendable.Text.Tests {
             CollectionAssert.AreEqual(
                 new[] { "0x03", "0xf6", "0xe4", "0x8a" },
                 "gsd9 0h84 0x03 OX27 0xf6 6481 0xe4 085o 0x8a"
-                    .Matches(regex).Select(m => m.Value).ToArray());
+                    .Matches(regex)
+                    .Select(m => m.Value)
+                    .ToArray()
+            );
         }
 
         [TestMethod]
@@ -35,7 +39,10 @@ namespace Netxtendable.Text.Tests {
             CollectionAssert.AreEqual(
                 new[] { "0x03", "0xf6", "0xe4", "0x8a" },
                 "gsd9 0h84 0x03 OX27 0xf6 6481 0xe4 085o 0x8a"
-                    .Matches(@"\b0x[0-9a-fA-F]+\b").Select(m => m.Value).ToArray());
+                    .Matches(@"\b0x[0-9a-fA-F]+\b")
+                    .Select(m => m.Value)
+                    .ToArray()
+            );
         }
 
         [TestMethod]
@@ -43,7 +50,8 @@ namespace Netxtendable.Text.Tests {
             var regex = new Regex(@"\d{2}");
             Assert.AreEqual(
                 "s?d?gs??sdd?s?gesd?",
-                "s68d84gs6854sdd74s68gesd54".Replace(regex, "?"));
+                "s68d84gs6854sdd74s68gesd54".Replace(regex, "?")
+            );
         }
 
         [TestMethod]
@@ -52,14 +60,16 @@ namespace Netxtendable.Text.Tests {
             Assert.AreEqual(
                 "sDdTgsD6sddJsDgesd6",
                 "s68d84gs6854sdd74s68gesd54"
-                    .Replace(regex, m => ((char)int.Parse(m.Value)).ToString()));
+                    .Replace(regex, m => ((char)int.Parse(m.Value)).ToString())
+            );
         }
 
         [TestMethod]
         public void RegexReplace_Test1() {
             Assert.AreEqual(
                 "s?d?gs??sdd?s?gesd?",
-                "s68d84gs6854sdd74s68gesd54".RegexReplace(@"\d{2}", "?"));
+                "s68d84gs6854sdd74s68gesd54".RegexReplace(@"\d{2}", "?")
+            );
         }
 
         [TestMethod]
@@ -67,7 +77,8 @@ namespace Netxtendable.Text.Tests {
             Assert.AreEqual(
                 "sDdTgsD6sddJsDgesd6",
                 "s68d84gs6854sdd74s68gesd54"
-                    .RegexReplace(@"\d{2}", m => ((char)int.Parse(m.Value)).ToString()));
+                    .RegexReplace(@"\d{2}", m => ((char)int.Parse(m.Value)).ToString())
+            );
         }
 
         [TestMethod]
@@ -80,7 +91,9 @@ namespace Netxtendable.Text.Tests {
             CollectionAssert.AreEqual(
                 output,
                 "&gt; <b>Hello</b> world of <i><b>regexes</b>!</i> :)"
-                    .Split(regex).ToArray());
+                    .Split(regex)
+                    .ToArray()
+            );
         }
 
         [TestMethod]
@@ -93,7 +106,9 @@ namespace Netxtendable.Text.Tests {
             CollectionAssert.AreEqual(
                 output,
                 "&gt; <b>Hello</b> world of <i><b>regexes</b>!</i> :)"
-                    .RegexSplit(pattern).ToArray());
+                    .RegexSplit(pattern)
+                    .ToArray()
+            );
         }
 
         [TestMethod]
@@ -135,7 +150,8 @@ namespace Netxtendable.Text.Tests {
             Assert.AreEqual("ba", "ezan ebz0 0xba re1b z6re".GetMatchedGroup(regex, "value"));
             Assert.AreEqual(
                 "00",
-                "ezan ebz0 06ba re1b z6re".GetMatchedGroup(regex, "value", "00"));
+                "ezan ebz0 06ba re1b z6re".GetMatchedGroup(regex, "value", "00")
+            );
         }
 
         [TestMethod]
@@ -145,7 +161,8 @@ namespace Netxtendable.Text.Tests {
             Assert.AreEqual("ba", "ezan ebz0 0xba re1b z6re".GetMatchedGroup(pattern, "value"));
             Assert.AreEqual(
                 "00",
-                "ezan ebz0 06ba re1b z6re".GetMatchedGroup(pattern, "value", "00"));
+                "ezan ebz0 06ba re1b z6re".GetMatchedGroup(pattern, "value", "00")
+            );
         }
 
         [TestMethod]
@@ -166,42 +183,53 @@ namespace Netxtendable.Text.Tests {
         public void RegexEscape_Test() {
             Assert.AreEqual(
                 @"0x\(\?'value'\[0-9a-fA-F]\+\)",
-                "0x(?'value'[0-9a-fA-F]+)".RegexEscape());
+                "0x(?'value'[0-9a-fA-F]+)".RegexEscape()
+            );
         }
 
         [TestMethod]
         public void XmlEscape_Test() {
+            Assert.AreEqual("", "".XmlEscape());
             Assert.AreEqual(
                 "&lt;a href=&quot;test&quot;&gt;it&apos;s great &amp; easy&lt;/a&gt;",
-                "<a href=\"test\">it's great & easy</a>".XmlEscape());
+                "<a href=\"test\">it's great & easy</a>".XmlEscape()
+            );
         }
 
         [TestMethod]
         public void UnifyLineEndingsToCr_Test() {
+            Assert.AreEqual("", "".UnifyLineEndingsToCr());
             Assert.AreEqual(
                 " Hello\r\rworld\r of lines\r\r\r!\r",
-                " Hello\u2028\r\nworld\r of lines\r\u2028\n!\n".UnifyLineEndingsToCr());
+                " Hello\u2028\r\nworld\r of lines\r\u2028\n!\n".UnifyLineEndingsToCr()
+            );
         }
 
         [TestMethod]
         public void UnifyLineEndingsToLf_Test() {
+            Assert.AreEqual("", "".UnifyLineEndingsToLf());
             Assert.AreEqual(
                 " Hello\n\nworld\n of lines\n\n\n!\n",
-                " Hello\u2028\r\nworld\r of lines\r\u2028\n!\n".UnifyLineEndingsToLf());
+                " Hello\u2028\r\nworld\r of lines\r\u2028\n!\n".UnifyLineEndingsToLf()
+            );
         }
 
         [TestMethod]
         public void UnifyLineEndingsToCrLf_Test() {
+            Assert.AreEqual("", "".UnifyLineEndingsToCrLf());
             Assert.AreEqual(
                 " Hello\r\n\r\nworld\r\n of lines\r\n\r\n\r\n!\r\n",
-                " Hello\u2028\r\nworld\r of lines\r\u2028\n!\n".UnifyLineEndingsToCrLf());
+                " Hello\u2028\r\nworld\r of lines\r\u2028\n!\n".UnifyLineEndingsToCrLf()
+            );
         }
 
         [TestMethod]
         public void UnifyLineEndingsToLs_Test() {
+            Assert.AreEqual("", "".UnifyLineEndingsToLs());
             Assert.AreEqual(
                 " Hello\u2028\u2028world\u2028 of lines\u2028\u2028\u2028!\u2028",
-                " Hello\u2028\r\nworld\r of lines\r\u2028\n!\n".UnifyLineEndingsToLs());
+                " Hello\u2028\r\nworld\r of lines\r\u2028\n!\n".UnifyLineEndingsToLs()
+            );
         }
 
         [TestMethod]
@@ -209,10 +237,22 @@ namespace Netxtendable.Text.Tests {
             var input = "field1, field1;  field2.;;FiElD4;";
             CollectionAssert.AreEqual(
                 new[] { "field1, field1", "  field2.", "", "FiElD4", "" },
-                input.LazySplit(';').ToArray());
+                input.LazySplit(';').ToArray()
+            );
             CollectionAssert.AreEqual(
                 new[] { "field1, field1", "  field2.", "FiElD4" },
-                input.LazySplit(';', false).ToArray());
+                input.LazySplit(';', false).ToArray()
+            );
+            input = "field1, field1;  field2.;;FiElD4";
+            CollectionAssert.AreEqual(
+                new[] { "field1, field1", "  field2.", "", "FiElD4" },
+                input.LazySplit(';').ToArray()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).LazySplit(';', false)
+                                      .GetEnumerator()
+                                      .MoveNext()
+            );
         }
 
         [TestMethod]
@@ -221,10 +261,27 @@ namespace Netxtendable.Text.Tests {
             var delimiters = new[] { ':', ';' };
             CollectionAssert.AreEqual(
                 new[] { "field1, field1", "  field2.", "", "FiElD4", "" },
-                input.LazySplit(delimiters).ToArray());
+                input.LazySplit(delimiters).ToArray()
+            );
             CollectionAssert.AreEqual(
                 new[] { "field1, field1", "  field2.", "FiElD4" },
-                input.LazySplit(delimiters, false).ToArray());
+                input.LazySplit(delimiters, false).ToArray()
+            );
+            input = "field1, field1;  field2.:;FiElD4";
+            CollectionAssert.AreEqual(
+                new[] { "field1, field1", "  field2.", "", "FiElD4" },
+                input.LazySplit(delimiters).ToArray()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).LazySplit(delimiters, false)
+                                      .GetEnumerator()
+                                      .MoveNext()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => "".LazySplit(null as char[], false)
+                        .GetEnumerator()
+                        .MoveNext()
+            );
         }
 
         [TestMethod]
@@ -232,10 +289,32 @@ namespace Netxtendable.Text.Tests {
             var input = "field1, field1;   field2.; ; FiElD4; ";
             CollectionAssert.AreEqual(
                 new[] { "field1, field1", "  field2.", "", "FiElD4", "" },
-                input.LazySplit("; ").ToArray());
+                input.LazySplit("; ").ToArray()
+            );
             CollectionAssert.AreEqual(
                 new[] { "field1, field1", "  field2.", "FiElD4" },
-                input.LazySplit("; ", false).ToArray());
+                input.LazySplit("; ", false).ToArray()
+            );
+            input = "field1, field1;   field2.; ; FiElD4";
+            CollectionAssert.AreEqual(
+                new[] { "field1, field1", "  field2.", "", "FiElD4" },
+                input.LazySplit("; ").ToArray()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).LazySplit("; ", false)
+                                      .GetEnumerator()
+                                      .MoveNext()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => "".LazySplit(null as string, false)
+                        .GetEnumerator()
+                        .MoveNext()
+            );
+            Assert.ThrowsException<ArgumentException>(
+                () => "".LazySplit("", false)
+                        .GetEnumerator()
+                        .MoveNext()
+            );
         }
 
         [TestMethod]
@@ -243,11 +322,21 @@ namespace Netxtendable.Text.Tests {
             var input1 = " Hello\u2028\r\nworld\r of lines\n\n!\n";
             CollectionAssert.AreEqual(
                 new[] { " Hello", "", "world", " of lines", "", "!" },
-                input1.EnumerateLines().ToArray());
+                input1.EnumerateLines().ToArray()
+            );
             CollectionAssert.AreEqual(
                 new[] { " Hello", "world", " of lines", "!" },
-                input1.EnumerateLines(false).ToArray());
-            CollectionAssert.AreEqual(new[] { "", "1", "2" }, "\n1\n2".EnumerateLines().ToArray());
+                input1.EnumerateLines(false).ToArray()
+            );
+            CollectionAssert.AreEqual(
+                new[] { "", "1", "2" },
+                "\n1\n2".EnumerateLines().ToArray()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).EnumerateLines()
+                                      .GetEnumerator()
+                                      .MoveNext()
+            );
         }
 
         [TestMethod]
@@ -255,11 +344,19 @@ namespace Netxtendable.Text.Tests {
             var input1 = " Hello\u2028\r\nworld\r of lines\n\n!\n";
             CollectionAssert.AreEqual(
                 new[] { " Hello", "", "world", " of lines", "", "!" },
-                input1.SplitLines());
+                input1.SplitLines()
+            );
             CollectionAssert.AreEqual(
                 new[] { " Hello", "world", " of lines", "!" },
-                input1.SplitLines(false));
-            CollectionAssert.AreEqual(new[] { "", "1", "2" }, "\n1\n2".SplitLines());
+                input1.SplitLines(false)
+            );
+            CollectionAssert.AreEqual(
+                new[] { "", "1", "2" },
+                "\n1\n2".SplitLines()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).SplitLines()
+            );
         }
 
         [TestMethod]
@@ -267,16 +364,19 @@ namespace Netxtendable.Text.Tests {
             Assert.AreEqual(
                 "<a href=\"test\">it's great & easy</a>",
                 "&lt;a href=&quot;test&quot;&gt;it&apos;s great &amp; easy&lt;/a&gt;"
-                    .ExpandHtmlEntities());
+                    .ExpandHtmlEntities()
+            );
         }
 
         [TestMethod]
         public void CollapseWhitespace_Test() {
             Assert.AreEqual(
                 "Hello World of whitespace !",
-                "   Hello   \n World \r\t of\nwhitespace \r\n!\t".CollapseWhitespace());
+                "   Hello   \n World \r\t of\nwhitespace \r\n!\t".CollapseWhitespace()
+            );
+            Assert.AreEqual(null, (null as string).CollapseWhitespace());
         }
-        
+
         [TestMethod]
         public void Repeat_Test() {
             Assert.AreEqual("", "Hello".Repeat(0));
@@ -284,6 +384,7 @@ namespace Netxtendable.Text.Tests {
             Assert.AreEqual("HelloHelloHello", "Hello".Repeat(3));
             Assert.AreEqual("AAAAAAAAAAAAAAAAAAAA", "A".Repeat(20));
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => "Hello".Repeat(-3));
+            Assert.ThrowsException<ArgumentNullException>(() => (null as string).Repeat(2));
         }
 
         [TestMethod]
@@ -424,6 +525,11 @@ namespace Netxtendable.Text.Tests {
             Assert.AreEqual(15f, "15".ParseSingleOrDefault());
             Assert.AreEqual(-25f, "-0.25e2".ParseSingleOrDefault());
             Assert.AreEqual(15f, "Z5".ParseSingleOrDefault(15f));
+            var defaultCulture = StringExtensions.DefaultCulture;
+            StringExtensions.DefaultCulture = CultureInfo.GetCultureInfo("cs-CZ");
+            Assert.AreEqual(4f, "15.3".ParseSingleOrDefault(4f));
+            Assert.AreEqual(15.3f, "15,3".ParseSingleOrDefault());
+            StringExtensions.DefaultCulture = defaultCulture;
         }
 
         [TestMethod]

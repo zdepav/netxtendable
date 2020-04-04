@@ -16,6 +16,9 @@ namespace Netxtendable {
         /// <returns>
         /// Infinite <see cref="IEnumerable{T}"/> with the lazily generated sequence.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="generator"/> is null.
+        /// </exception>
         /// <example><code>
         /// var random = new <see cref="Random"/>();<br/>
         /// var values = <see cref="EnumerableExtras"/>.Generate(() =>
@@ -42,6 +45,9 @@ namespace Netxtendable {
         /// <returns>
         /// Infinite <see cref="IEnumerable{T}"/> with the lazily generated sequence.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="generator"/> is null.
+        /// </exception>
         /// <example><code>
         /// var collatzConjecture = <see cref="EnumerableExtras"/>.Generate(27, n => n % 2 == 0 ? n
         /// / 2 : 3 * n + 1).<see cref="Enumerable.TakeWhile{T}(IEnumerable{T},Func{T,bool})"/>(n =>
@@ -69,6 +75,9 @@ namespace Netxtendable {
         /// <returns>
         /// Infinite <see cref="IEnumerable{T}"/> with the lazily generated sequence.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="generator"/> is null.
+        /// </exception>
         /// <example><code>
         /// var fibonacci = <see cref="EnumerableExtras"/>.Generate(0, 1, (a, b) => a + b).
         /// <see cref="Enumerable.Take{T}"/>(25).
@@ -101,6 +110,9 @@ namespace Netxtendable {
         /// <returns>
         /// Infinite <see cref="IEnumerable{T}"/> with the lazily generated sequence.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="generator"/> is null.
+        /// </exception>
         public static IEnumerable<T> Generate<T>(
             T seed1,
             T seed2,
