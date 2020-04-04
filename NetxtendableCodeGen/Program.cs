@@ -510,9 +510,7 @@ namespace NetxtendableCodeGen {
                 sw.WriteLine(
                     valueTuple
                         ? $"            var ints = ({items}).ToArray();"
-                        : $@"            var ints = new Tuple<{
-                                string.Join(", ", Enumerable.Repeat("int", n))
-                            }>({items}).ToArray();"
+                        : $"            var ints = Tuple.Create({items}).ToArray();"
                 );
                 sw.WriteLine(
                     $@"            CollectionAssert.AreEqual(new[] {{ {
@@ -520,15 +518,11 @@ namespace NetxtendableCodeGen {
                         } }}, ints);"
                 );
                 items = string.Join(", ", Enumerable.Range(1, n).Select(i => $"\"{i}\""));
-                if (valueTuple) {
-                    sw.WriteLine($"            var strings = ({items}).ToArray();");
-                } else {
-                    sw.WriteLine("            var strings = new Tuple<");
-                    sw.WriteLine(
-                        $"                {string.Join(", ", Enumerable.Repeat("string", n))}"
-                    );
-                    sw.WriteLine($"            >({items}).ToArray();");
-                }
+                sw.WriteLine(
+                    valueTuple
+                        ? $"            var strings = ({items}).ToArray();"
+                        : $"            var strings = Tuple.Create({items}).ToArray();"
+                );
                 sw.WriteLine(
                     $@"            CollectionAssert.AreEqual(new[] {{ {
                             string.Join(", ", Enumerable.Range(1, n).Select(i => $"\"{i}\""))
@@ -550,30 +544,22 @@ namespace NetxtendableCodeGen {
                 sw.WriteLine("        [TestMethod]");
                 sw.WriteLine($"        public void ToList_{n}_Test() {{");
                 var items = string.Join(", ", Enumerable.Range(1, n));
-                if (valueTuple) {
-                    sw.WriteLine($"            var ints = ({items}).ToList();");
-                } else {
-                    sw.WriteLine(
-                        $@"            var ints = new Tuple<{
-                                string.Join(", ", Enumerable.Repeat("int", n))
-                            }>({items}).ToList();"
-                    );
-                }
+                sw.WriteLine(
+                    valueTuple
+                        ? $"            var ints = ({items}).ToList();"
+                        : $"            var ints = Tuple.Create({items}).ToList();"
+                );
                 sw.WriteLine(
                     $@"            CollectionAssert.AreEqual(new[] {{ {
                             string.Join(", ", Enumerable.Range(1, n))
                         } }}, ints);"
                 );
                 items = string.Join(", ", Enumerable.Range(1, n).Select(i => $"\"{i}\""));
-                if (valueTuple) {
-                    sw.WriteLine($"            var strings = ({items}).ToList();");
-                } else {
-                    sw.WriteLine("            var strings = new Tuple<");
-                    sw.WriteLine(
-                        $"                {string.Join(", ", Enumerable.Repeat("string", n))}"
-                    );
-                    sw.WriteLine($"            >({items}).ToList();");
-                }
+                sw.WriteLine(
+                    valueTuple
+                        ? $"            var strings = ({items}).ToList();"
+                        : $"            var strings = Tuple.Create({items}).ToList();"
+                );
                 sw.WriteLine(
                     $@"            CollectionAssert.AreEqual(new[] {{ {
                             string.Join(", ", Enumerable.Range(1, n).Select(i => $"\"{i}\""))
@@ -595,30 +581,22 @@ namespace NetxtendableCodeGen {
                 sw.WriteLine("        [TestMethod]");
                 sw.WriteLine($"        public void ToSet_{n}_Test() {{");
                 var items = string.Join(", ", Enumerable.Range(1, n));
-                if (valueTuple) {
-                    sw.WriteLine($"            var ints = ({items}).ToSet().ToArray();");
-                } else {
-                    sw.WriteLine("            var ints = new Tuple<");
-                    sw.WriteLine(
-                        $"                {string.Join(", ", Enumerable.Repeat("int", n))}"
-                    );
-                    sw.WriteLine($"            >({items}).ToSet().ToArray();");
-                }
+                sw.WriteLine(
+                    valueTuple
+                        ? $"            var ints = ({items}).ToSet().ToArray();"
+                        : $"            var ints = Tuple.Create({items}).ToSet().ToArray();"
+                );
                 sw.WriteLine(
                     $@"            CollectionAssert.AreEquivalent(new[] {{ {
                             string.Join(", ", Enumerable.Range(1, n))
                         } }}, ints);"
                 );
                 items = string.Join(", ", Enumerable.Range(1, n).Select(i => $"\"{i}\""));
-                if (valueTuple) {
-                    sw.WriteLine($"            var strings = ({items}).ToSet().ToArray();");
-                } else {
-                    sw.WriteLine("            var strings = new Tuple<");
-                    sw.WriteLine(
-                        $"                {string.Join(", ", Enumerable.Repeat("string", n))}"
-                    );
-                    sw.WriteLine($"            >({items}).ToSet().ToArray();");
-                }
+                sw.WriteLine(
+                    valueTuple
+                        ? $"            var strings = ({items}).ToSet().ToArray();"
+                        : $"            var strings = Tuple.Create({items}).ToSet().ToArray();"
+                );
                 sw.WriteLine(
                     $@"            CollectionAssert.AreEquivalent(new[] {{ {
                             string.Join(", ", Enumerable.Range(1, n).Select(i => $"\"{i}\""))
@@ -645,15 +623,11 @@ namespace NetxtendableCodeGen {
                                 Enumerable.Range(1, n).Select(i => $"({i}, 1{i})")
                             ) +
                             "\n            ";
-                if (valueTuple) {
-                    sw.WriteLine($"            var ints = ({items}).ToDictionary();");
-                } else {
-                    sw.WriteLine("            var ints = new Tuple<");
-                    sw.WriteLine(
-                        $"                {string.Join(", ", Enumerable.Repeat("(int, int)", n))}"
-                    );
-                    sw.WriteLine($"            >({items}).ToDictionary();");
-                }
+                sw.WriteLine(
+                    valueTuple
+                        ? $"            var ints = ({items}).ToDictionary();"
+                        : $"            var ints = Tuple.Create({items}).ToDictionary();"
+                );
                 sw.WriteLine("            CollectionAssert.AreEquivalent(new[] {");
                 for (var i = 1; i <= n; ++i) {
                     sw.WriteLine(
@@ -667,19 +641,11 @@ namespace NetxtendableCodeGen {
                             Enumerable.Range(1, n).Select(i => $"(\"{i}\", \"1{i}\")")
                         ) +
                         "\n            ";
-                if (valueTuple) {
-                    sw.WriteLine($"            var strings = ({items}).ToDictionary();");
-                } else {
-                    sw.WriteLine("            var strings = new Tuple<");
-                    sw.WriteLine(
-                        "                " +
-                        string.Join(
-                            ",\n                ",
-                            Enumerable.Repeat("(string, string)", n)
-                        )
-                    );
-                    sw.WriteLine($"            >({items}).ToDictionary();");
-                }
+                sw.WriteLine(
+                    valueTuple
+                        ? $"            var strings = ({items}).ToDictionary();"
+                        : $"            var strings = Tuple.Create({items}).ToDictionary();"
+                );
                 sw.WriteLine("            CollectionAssert.AreEquivalent(new[] {");
                 for (var i = 1; i <= n; ++i) {
                     sw.WriteLine(
@@ -708,30 +674,22 @@ namespace NetxtendableCodeGen {
                 sw.WriteLine("        [TestMethod]");
                 sw.WriteLine($"        public void Enumerate_{n}_Test() {{");
                 var items = string.Join(", ", Enumerable.Range(1, n));
-                if (valueTuple) {
-                    sw.WriteLine($"            var ints = ({items}).Enumerate().ToArray();");
-                } else {
-                    sw.WriteLine("            var ints = new Tuple<");
-                    sw.WriteLine(
-                        $@"                {string.Join(", ", Enumerable.Repeat("int", n))}"
-                    );
-                    sw.WriteLine($"            >({items}).Enumerate().ToArray();");
-                }
+                sw.WriteLine(
+                    valueTuple
+                        ? $"            var ints = ({items}).Enumerate().ToArray();"
+                        : $"            var ints = Tuple.Create({items}).Enumerate().ToArray();"
+                );
                 sw.WriteLine(
                     $@"            CollectionAssert.AreEqual(new[] {{ {
                             string.Join(", ", Enumerable.Range(1, n))
                         } }}, ints);"
                 );
                 items = string.Join(", ", Enumerable.Range(1, n).Select(i => $"\"{i}\""));
-                if (valueTuple) {
-                    sw.WriteLine($"            var strings = ({items}).Enumerate().ToArray();");
-                } else {
-                    sw.WriteLine("            var strings = new Tuple<");
-                    sw.WriteLine(
-                        $@"                {string.Join(", ", Enumerable.Repeat("string", n))}"
-                    );
-                    sw.WriteLine($"            >({items}).Enumerate().ToArray();");
-                }
+                sw.WriteLine(
+                    valueTuple
+                        ? $"            var strings = ({items}).Enumerate().ToArray();"
+                        : $"            var strings = Tuple.Create({items}).Enumerate().ToArray();"
+                );
                 sw.WriteLine(
                     $@"            CollectionAssert.AreEqual(new[] {{ {
                             string.Join(", ", Enumerable.Range(1, n).Select(i => $"\"{i}\""))
@@ -884,9 +842,7 @@ namespace NetxtendableCodeGen {
                 sw.WriteLine($"        public void Deconstruct_{n}_Test() {{");
                 sw.Write("            var (");
                 sw.Write(string.Join(", ", Enumerable.Range(1, n).Select(i => $"i{i}")));
-                sw.Write(") = new Tuple<\n                ");
-                sw.Write(string.Join(", ", Enumerable.Repeat("int", n)));
-                sw.Write("\n            >(");
+                sw.Write(") = Tuple.Create(");
                 sw.Write(string.Join(", ", Enumerable.Range(1, n)));
                 sw.WriteLine(");");
                 for (var i = 1; i <= n; ++i) {
@@ -894,9 +850,7 @@ namespace NetxtendableCodeGen {
                 }
                 sw.Write("            var (");
                 sw.Write(string.Join(", ", Enumerable.Range(1, n).Select(i => $"s{i}")));
-                sw.Write(") = new Tuple<\n                ");
-                sw.Write(string.Join(", ", Enumerable.Repeat("string", n)));
-                sw.Write("\n            >(");
+                sw.Write(") = Tuple.Create(");
                 sw.Write(string.Join(", ", Enumerable.Range(1, n).Select(i => $"\"{i}\"")));
                 sw.WriteLine(");");
                 for (var i = 1; i <= n; ++i) {
