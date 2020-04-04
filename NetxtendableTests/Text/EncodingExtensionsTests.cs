@@ -25,7 +25,5 @@ namespace Netxtendable.Text.Tests {
             Assert.IsFalse(Encoding.UTF8.TryGetChars(bytes, out _, -1));
             Assert.IsFalse(Encoding.UTF8.TryGetChars(bytes, out _, 5, 100));
         }
-
     }
-
 }

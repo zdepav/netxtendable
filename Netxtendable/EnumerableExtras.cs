@@ -1,0 +1,151 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Netxtendable {
+
+    /// <summary>Class with generic method that create various enumerables.</summary>
+    public static class EnumerableExtras {
+
+        /// <summary>
+        /// Creates <see cref="IEnumerable{T}"/> with infinite sequence consisting of values
+        /// returned by <paramref name="generator"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the values.</typeparam>
+        /// <param name="generator">Function used to generate values in the sequence.</param>
+        /// <returns>
+        /// Infinite <see cref="IEnumerable{T}"/> with the lazily generated sequence.
+        /// </returns>
+        /// <example><code>
+        /// var random = new <see cref="Random"/>();<br/>
+        /// var values = <see cref="EnumerableExtras"/>.Generate(() =>
+        /// random.<see cref="Random.Next(int)"/>(100)).<see cref="Enumerable.Take{T}"/>(10).
+        /// <see cref="Enumerable.ToList{T}"/>();
+        /// </code></example>
+        public static IEnumerable<T> Generate<T>(Func<T> generator) {
+            if (generator is null) {
+                throw new ArgumentNullException(nameof(generator));
+            }
+            while (true) {
+                yield return generator();
+            }
+        }
+
+        /// <summary>
+        /// Creates <see cref="IEnumerable{T}"/> with infinite sequence starting with
+        /// <paramref name="seed"/> with following values generated from previous one using
+        /// <paramref name="generator"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the values.</typeparam>
+        /// <param name="seed">First value of the generated sequence.</param>
+        /// <param name="generator">Function used to generate values in the sequence.</param>
+        /// <returns>
+        /// Infinite <see cref="IEnumerable{T}"/> with the lazily generated sequence.
+        /// </returns>
+        /// <example><code>
+        /// var collatzConjecture = <see cref="EnumerableExtras"/>.Generate(27, n => n % 2 == 0 ? n
+        /// / 2 : 3 * n + 1).<see cref="Enumerable.TakeWhile{T}(IEnumerable{T},Func{T,bool})"/>(n =>
+        /// n != 1).<see cref="Enumerable.ToList{T}"/>();
+        /// </code></example>
+        public static IEnumerable<T> Generate<T>(T seed, Func<T, T> generator) {
+            if (generator is null) {
+                throw new ArgumentNullException(nameof(generator));
+            }
+            yield return seed;
+            while (true) {
+                yield return seed = generator(seed);
+            }
+        }
+
+        /// <summary>
+        /// Creates <see cref="IEnumerable{T}"/> with infinite sequence starting with
+        /// <paramref name="seed1"/> and <paramref name="seed2"/> with following values generated
+        /// from previous ones using <paramref name="generator"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the values.</typeparam>
+        /// <param name="seed1">First value of the generated sequence.</param>
+        /// <param name="seed2">Second value of the generated sequence.</param>
+        /// <param name="generator">Function used to generate values in the sequence.</param>
+        /// <returns>
+        /// Infinite <see cref="IEnumerable{T}"/> with the lazily generated sequence.
+        /// </returns>
+        /// <example><code>
+        /// var fibonacci = <see cref="EnumerableExtras"/>.Generate(0, 1, (a, b) => a + b).
+        /// <see cref="Enumerable.Take{T}"/>(25).
+        /// <see cref="Enumerable.ToList{T}"/>();
+        /// </code></example>
+        public static IEnumerable<T> Generate<T>(T seed1, T seed2, Func<T, T, T> generator) {
+            if (generator is null) {
+                throw new ArgumentNullException(nameof(generator));
+            }
+            yield return seed1;
+            yield return seed2;
+            while (true) {
+                var newValue = generator(seed1, seed2);
+                yield return newValue;
+                seed1 = seed2;
+                seed2 = newValue;
+            }
+        }
+
+        /// <summary>
+        /// Creates <see cref="IEnumerable{T}"/> with infinite sequence starting with
+        /// <paramref name="seed1"/>, <paramref name="seed2"/> and <paramref name="seed3"/> with
+        /// following values generated from previous ones using <paramref name="generator"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the values.</typeparam>
+        /// <param name="seed1">First value of the generated sequence.</param>
+        /// <param name="seed2">Second value of the generated sequence.</param>
+        /// <param name="seed3">Third value of the generated sequence.</param>
+        /// <param name="generator">Function used to generate values in the sequence.</param>
+        /// <returns>
+        /// Infinite <see cref="IEnumerable{T}"/> with the lazily generated sequence.
+        /// </returns>
+        public static IEnumerable<T> Generate<T>(
+            T seed1,
+            T seed2,
+            T seed3,
+            Func<T, T, T, T> generator
+        ) {
+            if (generator is null) {
+                throw new ArgumentNullException(nameof(generator));
+            }
+            yield return seed1;
+            yield return seed2;
+            yield return seed3;
+            while (true) {
+                var newValue = generator(seed1, seed2, seed3);
+                yield return newValue;
+                seed1 = seed2;
+                seed2 = seed3;
+                seed3 = newValue;
+            }
+        }
+
+        /// <summary>
+        /// Creates <see cref="IEnumerable{T}"/> that contains only <paramref name="value"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the value.</typeparam>
+        /// <param name="value">Value to use.</param>
+        /// <returns>
+        /// <see cref="IEnumerable{T}"/> that contains only <paramref name="value"/>.
+        /// </returns>
+        public static IEnumerable<T> One<T>(T value) {
+            yield return value;
+        }
+
+        /// <summary>
+        /// Creates <see cref="IEnumerable{T}"/> that infinitely repeats <paramref name="value"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the value.</typeparam>
+        /// <param name="value">Value to use.</param>
+        /// <returns>
+        /// <see cref="IEnumerable{T}"/> that infinitely repeats <paramref name="value"/>.
+        /// </returns>
+        public static IEnumerable<T> Repeat<T>(T value) {
+            while (true) {
+                yield return value;
+            }
+        }
+    }
+}
