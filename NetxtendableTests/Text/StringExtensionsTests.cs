@@ -65,6 +65,67 @@ namespace Netxtendable.Text.Tests {
         }
 
         [TestMethod]
+        public void Replace_Test3() {
+            Assert.AreEqual(
+                "Hello\r\nWorld!\r\nThis\r\nis\r\nAwesome!",
+                "Hello\nWorld!\nThis\nis\nAwesome!".Replace('\n', "\r\n")
+            );
+            Assert.AreEqual("", "".Replace('\n', "\r\n"));
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).Replace('\n', "\r\n")
+            );
+        }
+
+        [TestMethod]
+        public void Replace_Test4() {
+            var chars = new[] { '\n', '\r' };
+            Assert.AreEqual(
+                "Hello##World!#This#is#Awesome!",
+                "Hello\r\nWorld!\nThis\ris\nAwesome!".Replace(chars, "#")
+            );
+            Assert.AreEqual(
+                "HelloWorld!ThisisAwesome!",
+                "Hello\r\nWorld!\nThis\ris\nAwesome!".Replace(chars, null as string)
+            );
+            Assert.AreEqual("", "".Replace(chars, "123"));
+            Assert.AreEqual("Hello World!", "Hello World!".Replace(new char[0], "123"));
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).Replace(chars, "")
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => "".Replace(null as char[], "")
+            );
+        }
+
+        [TestMethod]
+        public void Replace_Test5() {
+            static string Evaluator(char c) => $"\\{c}";
+            var chars = new[] { '[', ']', '{', '}', '(', ')', '\\' };
+            Assert.AreEqual(
+                @"\\b#\(\[0-9a-fA-F\]\{6\}\)\\b",
+                @"\b#([0-9a-fA-F]{6})\b".Replace(chars, Evaluator)
+            );
+            Assert.AreEqual("", "".Replace(chars, Evaluator));
+            Assert.AreEqual(
+                @"\b#([0-9a-fA-F]{6})\b",
+                @"\b#([0-9a-fA-F]{6})\b".Replace(new char[0], Evaluator)
+            );
+            Assert.AreEqual(
+                "b#0-9a-fA-F6b",
+                @"\b#([0-9a-fA-F]{6})\b".Replace(chars, _ => null)
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).Replace(chars, Evaluator)
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => "".Replace(null as char[], Evaluator)
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => "".Replace(chars, null as Func<char, string>)
+            );
+        }
+
+        [TestMethod]
         public void RegexReplace_Test1() {
             Assert.AreEqual(
                 "s?d?gs??sdd?s?gesd?",

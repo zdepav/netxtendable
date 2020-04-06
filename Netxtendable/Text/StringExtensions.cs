@@ -115,6 +115,146 @@ namespace Netxtendable.Text {
                 : throw new ArgumentNullException(nameof(regex));
 
         /// <summary>
+        /// Replaces all occurences of <paramref name="needle"/> in <paramref name="str"/> by
+        /// <paramref name="replacement"/>.
+        /// </summary>
+        /// <param name="str">String to search in.</param>
+        /// <param name="needle">Character to search for.</param>
+        /// <param name="replacement">Replacement string for each match.</param>
+        /// <returns>Resulting string.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="str"/> is null.
+        /// </exception>
+        public static string Replace(
+            this string str,
+            char needle,
+            string replacement
+        ) {
+            if (str is null) {
+                throw new ArgumentNullException(nameof(str));
+            }
+            if (str.Length == 0) {
+                return str;
+            }
+            var buffer = new StringBuilder();
+            var start = 0;
+            var replacementNotEmpty = !string.IsNullOrEmpty(replacement);
+            for (var i = 0; i < str.Length; i++) {
+                if (str[i] == needle) {
+                    if (i > start) {
+                        buffer.Append(str, start, i - start);
+                    }
+                    if (replacementNotEmpty) {
+                        buffer.Append(replacement);
+                    }
+                    start = i + 1;
+                }
+            }
+            if (start < str.Length) {
+                buffer.Append(str, start, str.Length - start);
+            }
+            return buffer.ToString();
+        }
+
+        /// <summary>
+        /// Replaces all occurences of characters from <paramref name="needles"/> in
+        /// <paramref name="str"/> by <paramref name="replacement"/>.
+        /// </summary>
+        /// <param name="str">String to search in.</param>
+        /// <param name="needles">Characters to search for.</param>
+        /// <param name="replacement">Replacement string for each match.</param>
+        /// <returns>Resulting string.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="str"/> or <paramref name="needles"/> is null.
+        /// </exception>
+        public static string Replace(
+            this string str,
+            IList<char> needles,
+            string replacement
+        ) {
+            if (str is null) {
+                throw new ArgumentNullException(nameof(str));
+            }
+            if (needles is null) {
+                throw new ArgumentNullException(nameof(needles));
+            }
+            if (needles.Count == 0 || str.Length == 0) {
+                return str;
+            }
+            var set = needles.ToHashSet();
+            var buffer = new StringBuilder();
+            var start = 0;
+            var replacementNotEmpty = !string.IsNullOrEmpty(replacement);
+            for (var i = 0; i < str.Length; i++) {
+                if (set.Contains(str[i])) {
+                    if (i > start) {
+                        buffer.Append(str, start, i - start);
+                    }
+                    if (replacementNotEmpty) {
+                        buffer.Append(replacement);
+                    }
+                    start = i + 1;
+                }
+            }
+            if (start < str.Length) {
+                buffer.Append(str, start, str.Length - start);
+            }
+            return buffer.ToString();
+        }
+
+        /// <summary>
+        /// Replaces all occurences of characters from <paramref name="needles"/> in
+        /// <paramref name="str"/> by string returned by <paramref name="evaluator"/>.
+        /// </summary>
+        /// <param name="str">String to search in.</param>
+        /// <param name="needles">Characters to search for.</param>
+        /// <param name="evaluator">
+        /// A method that creates a replacement string for each matched character.
+        /// </param>
+        /// <returns>Resulting string.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="str"/>, <paramref name="needles"/> or
+        /// <paramref name="evaluator"/> is null.
+        /// </exception>
+        public static string Replace(
+            this string str,
+            IList<char> needles,
+            Func<char, string> evaluator
+        ) {
+            if (str is null) {
+                throw new ArgumentNullException(nameof(str));
+            }
+            if (needles is null) {
+                throw new ArgumentNullException(nameof(needles));
+            }
+            if (evaluator is null) {
+                throw new ArgumentNullException(nameof(needles));
+            }
+            if (needles.Count == 0 || str.Length == 0) {
+                return str;
+            }
+            var set = needles.ToHashSet();
+            var buffer = new StringBuilder();
+            var start = 0;
+            for (var i = 0; i < str.Length; i++) {
+                if (set.Contains(str[i])) {
+                    if (i > start) {
+                        buffer.Append(str, start, i - start);
+                    }
+                    var replacement = evaluator(str[i]);
+                    if (!string.IsNullOrEmpty(replacement)) {
+                        buffer.Append(replacement);
+                    }
+                    start = i + 1;
+                }
+            }
+            if (start < str.Length) {
+                buffer.Append(str, start, str.Length - start);
+            }
+            return buffer.ToString();
+        }
+
+        /// <summary>
         /// Replaces all occurences of <paramref name="pattern"/> in <paramref name="str"/> by
         /// <paramref name="replacement"/>.
         /// </summary>
@@ -374,8 +514,8 @@ namespace Netxtendable.Text {
                 return str;
             }
             var buffer = new StringBuilder();
-            foreach (var c in str) {
-                switch (c) {
+            for (var i = 0; i < str.Length; i++) {
+                switch (str[i]) {
                     case '<':
                         buffer.Append("&lt;");
                         break;
@@ -392,7 +532,7 @@ namespace Netxtendable.Text {
                         buffer.Append("&quot;");
                         break;
                     default:
-                        buffer.Append(c);
+                        buffer.Append(str[i]);
                         break;
                 }
             }
