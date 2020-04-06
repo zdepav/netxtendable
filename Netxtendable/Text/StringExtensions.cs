@@ -748,6 +748,11 @@ namespace Netxtendable.Text {
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/>  is null.
         /// </exception>
+        /// <example><code>
+        /// foreach (var line in text.EnumerateLines(false)) {
+        ///     ProcessLine(line);
+        /// }
+        /// </code></example>
         public static IEnumerable<string> EnumerateLines(
             this string str,
             bool includeEmpty = true

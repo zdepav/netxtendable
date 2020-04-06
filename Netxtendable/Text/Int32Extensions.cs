@@ -11,6 +11,13 @@ namespace Netxtendable.Text {
         /// </summary>
         /// <param name="i">Number to convert.</param>
         /// <returns>Resulting string.</returns>
+        /// <example><code>
+        /// for (var i = 0; i &lt; objects.Count; ++i) {
+        ///     if (objects[i].IsEmpty()) {
+        ///         Log.Debug($"{i.ToOrdinal()} object was empty.");
+        ///     }
+        /// }
+        /// </code></example>
         public static string ToOrdinal(this int i) {
             var buffer = new StringBuilder();
             if (i < 0) {

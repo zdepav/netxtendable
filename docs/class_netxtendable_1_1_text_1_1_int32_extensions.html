@@ -141,7 +141,12 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Resulting string.</dd></dl>
-
+<div class="fragment"><div class="line"><span class="keywordflow">for</span> (var i = 0; i &lt; objects.Count; ++i) {</div>
+<div class="line">    <span class="keywordflow">if</span> (objects[i].IsEmpty()) {</div>
+<div class="line">        Log.Debug($<span class="stringliteral">&quot;{i.ToOrdinal()} object was empty.&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="afeaac28b9694a960136472d41e157927"></a>

@@ -162,10 +162,11 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line">var random = <span class="keyword">new</span> &lt;see cref=<span class="stringliteral">&quot;Random&quot;</span>/&gt;();&lt;br/&gt;</div>
-<div class="line">var values = &lt;see cref=<span class="stringliteral">&quot;EnumerableExtras&quot;</span>/&gt;.Generate(() =&gt;</div>
-<div class="line">random.&lt;see cref=<span class="stringliteral">&quot;Random.Next(int)&quot;</span>/&gt;(100)).&lt;see cref=<span class="stringliteral">&quot;Enumerable.Take{T}&quot;</span>/&gt;(10).</div>
-<div class="line">&lt;see cref=<span class="stringliteral">&quot;Enumerable.ToList{T}&quot;</span>/&gt;();</div>
+<div class="fragment"><div class="line">var random = <span class="keyword">new</span> Random();</div>
+<div class="line">var values = EnumerableExtras</div>
+<div class="line">    .Generate(() =&gt; random.Next(100))</div>
+<div class="line">    .Take(10)</div>
+<div class="line">    .ToList();</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -224,9 +225,10 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line">var collatzConjecture = &lt;see cref=<span class="stringliteral">&quot;EnumerableExtras&quot;</span>/&gt;.Generate(27, n =&gt; n % 2 == 0 ? n</div>
-<div class="line">/ 2 : 3 * n + 1).&lt;see cref=<span class="stringliteral">&quot;Enumerable.TakeWhile{T}(IEnumerable{T},Func{T,bool})&quot;</span>/&gt;(n =&gt;</div>
-<div class="line">n != 1).&lt;see cref=<span class="stringliteral">&quot;Enumerable.ToList{T}&quot;</span>/&gt;();</div>
+<div class="fragment"><div class="line">var collatzConjecture = EnumerableExtras</div>
+<div class="line">    .Generate(27, n =&gt; n % 2 == 0 ? n / 2 : 3 * n + 1)</div>
+<div class="line">    .TakeWhile(n =&gt; n != 1)</div>
+<div class="line">    .ToList();</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -292,9 +294,10 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line">var fibonacci = &lt;see cref=<span class="stringliteral">&quot;EnumerableExtras&quot;</span>/&gt;.Generate(0, 1, (a, b) =&gt; a + b).</div>
-<div class="line">&lt;see cref=<span class="stringliteral">&quot;Enumerable.Take{T}&quot;</span>/&gt;(25).</div>
-<div class="line">&lt;see cref=<span class="stringliteral">&quot;Enumerable.ToList{T}&quot;</span>/&gt;();</div>
+<div class="fragment"><div class="line">var fibonacci = EnumerableExtras</div>
+<div class="line">    .Generate(0, 1, (a, b) =&gt; a + b)</div>
+<div class="line">    .Take(25)</div>
+<div class="line">    .ToList();</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -367,7 +370,11 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<div class="fragment"><div class="line">var fibonacci = EnumerableExtras</div>
+<div class="line">    .Generate(0, 1, 1, (a, b, c) =&gt; a + b - c)</div>
+<div class="line">    .Take(20)</div>
+<div class="line">    .ToArray()</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa035f38fcc660b2d076d45a4e1a29b76"></a>

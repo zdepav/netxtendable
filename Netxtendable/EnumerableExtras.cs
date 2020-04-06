@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Netxtendable {
 
@@ -20,10 +19,11 @@ namespace Netxtendable {
         /// Thrown when <paramref name="generator"/> is null.
         /// </exception>
         /// <example><code>
-        /// var random = new <see cref="Random"/>();<br/>
-        /// var values = <see cref="EnumerableExtras"/>.Generate(() =>
-        /// random.<see cref="Random.Next(int)"/>(100)).<see cref="Enumerable.Take{T}"/>(10).
-        /// <see cref="Enumerable.ToList{T}"/>();
+        /// var random = new Random();
+        /// var values = EnumerableExtras
+        ///     .Generate(() => random.Next(100))
+        ///     .Take(10)
+        ///     .ToList();
         /// </code></example>
         public static IEnumerable<T> Generate<T>(Func<T> generator) {
             if (generator is null) {
@@ -49,9 +49,10 @@ namespace Netxtendable {
         /// Thrown when <paramref name="generator"/> is null.
         /// </exception>
         /// <example><code>
-        /// var collatzConjecture = <see cref="EnumerableExtras"/>.Generate(27, n => n % 2 == 0 ? n
-        /// / 2 : 3 * n + 1).<see cref="Enumerable.TakeWhile{T}(IEnumerable{T},Func{T,bool})"/>(n =>
-        /// n != 1).<see cref="Enumerable.ToList{T}"/>();
+        /// var collatzConjecture = EnumerableExtras
+        ///     .Generate(27, n => n % 2 == 0 ? n / 2 : 3 * n + 1)
+        ///     .TakeWhile(n => n != 1)
+        ///     .ToList();
         /// </code></example>
         public static IEnumerable<T> Generate<T>(T seed, Func<T, T> generator) {
             if (generator is null) {
@@ -79,9 +80,10 @@ namespace Netxtendable {
         /// Thrown when <paramref name="generator"/> is null.
         /// </exception>
         /// <example><code>
-        /// var fibonacci = <see cref="EnumerableExtras"/>.Generate(0, 1, (a, b) => a + b).
-        /// <see cref="Enumerable.Take{T}"/>(25).
-        /// <see cref="Enumerable.ToList{T}"/>();
+        /// var fibonacci = EnumerableExtras
+        ///     .Generate(0, 1, (a, b) => a + b)
+        ///     .Take(25)
+        ///     .ToList();
         /// </code></example>
         public static IEnumerable<T> Generate<T>(T seed1, T seed2, Func<T, T, T> generator) {
             if (generator is null) {
@@ -113,6 +115,12 @@ namespace Netxtendable {
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="generator"/> is null.
         /// </exception>
+        /// <example><code>
+        /// var fibonacci = EnumerableExtras
+        ///     .Generate(0, 1, 1, (a, b, c) => a + b - c)
+        ///     .Take(20)
+        ///     .ToArray()
+        /// </code></example>
         public static IEnumerable<T> Generate<T>(
             T seed1,
             T seed2,
