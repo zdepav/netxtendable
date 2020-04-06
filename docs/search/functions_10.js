@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['xmlescape_171',['XmlEscape',['../class_netxtendable_1_1_text_1_1_string_extensions.html#abba12b54682748cc6f31f038cac3d697',1,'Netxtendable::Text::StringExtensions']]]
+  ['wherenot_3c_20t_20_3e_177',['WhereNot&lt; T &gt;',['../class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a7e73ca39648f721dc6f036859b2183ea',1,'Netxtendable::Collections::IEnumerableExtensions']]]
 ];

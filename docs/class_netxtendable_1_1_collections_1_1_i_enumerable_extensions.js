@@ -1,6 +1,12 @@
 var class_netxtendable_1_1_collections_1_1_i_enumerable_extensions =
 [
     [ "ConcatToString< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#abbb426b0f15f8da29dce00c722eaa0da", null ],
+    [ "Deconstruct< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a1619f176000428e1ccb8a84432ff55dc", null ],
+    [ "Deconstruct< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#ae454927a54b8cd403376b577ff98376b", null ],
+    [ "Deconstruct< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a43e795d217ca6a7a578cf5ac1bccc379", null ],
+    [ "Deconstruct< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#af9b5884887e45ad7c34686c4e6a51ddd", null ],
+    [ "Deconstruct< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a37505632d1bc14f0e288d2a8b5104322", null ],
+    [ "Deconstruct< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a3520a7b37ac0734dcaf04c12e1559790", null ],
     [ "FlatMap< T, U >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a98f13daa1bca76681514e78ce828b382", null ],
     [ "Flatten< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a122534937f1d8261a67d4426fd3dfb20", null ],
     [ "ForEach< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a26d19087d57d5514daed0f8bcee6717f", null ],
@@ -19,5 +25,6 @@ var class_netxtendable_1_1_collections_1_1_i_enumerable_extensions =
     [ "NonNull< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a67eb1a63012aff140a6372b268a0c322", null ],
     [ "ToDictionary< TKey, TValue >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#aafc5f9245661eed1282600bf6bd6338d", null ],
     [ "WhereNot< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a7e73ca39648f721dc6f036859b2183ea", null ],
+    [ "ZipWithNext< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#ab6781423fddb8d818f4e23e5ab80dafd", null ],
     [ "List< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a669584ab525ccd45d37ea88070d854fd", null ]
 ];

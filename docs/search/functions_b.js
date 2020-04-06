@@ -1,8 +1,25 @@
 var searchData=
 [
-  ['regexescape_149',['RegexEscape',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a6839f77beafc64ac321f20bf513b6fe9',1,'Netxtendable::Text::StringExtensions']]],
-  ['regexreplace_150',['RegexReplace',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a969a00aac228dd0e728f863e5bf46ad5',1,'Netxtendable.Text.StringExtensions.RegexReplace(this string str, string pattern, string replacement)'],['../class_netxtendable_1_1_text_1_1_string_extensions.html#a6cfc37eb6f69c5d5e629e11954e582db',1,'Netxtendable.Text.StringExtensions.RegexReplace(this string str, string pattern, MatchEvaluator evaluator)']]],
-  ['regexsplit_151',['RegexSplit',['../class_netxtendable_1_1_text_1_1_string_extensions.html#ab472757f009582066eb59078d04b8d2b',1,'Netxtendable::Text::StringExtensions']]],
-  ['repeat_152',['Repeat',['../class_netxtendable_1_1_text_1_1_string_extensions.html#af4cb277e321f76971a28da893696ada7',1,'Netxtendable::Text::StringExtensions']]],
-  ['replace_153',['Replace',['../class_netxtendable_1_1_text_1_1_string_extensions.html#acc24bf9065beb0a4f163d764b93a8bf4',1,'Netxtendable.Text.StringExtensions.Replace(this string str, Regex regex, string replacement)'],['../class_netxtendable_1_1_text_1_1_string_extensions.html#a43915e8eca2504070a794ee36ccaacc0',1,'Netxtendable.Text.StringExtensions.Replace(this string str, Regex regex, MatchEvaluator evaluator)']]]
+  ['parsebyte_133',['ParseByte',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a93331c5307cd5622e6c09fac12a00e60',1,'Netxtendable::Text::StringExtensions']]],
+  ['parsebyteordefault_134',['ParseByteOrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a1d470e25aaedbfa1d3d2671dc0b391f1',1,'Netxtendable::Text::StringExtensions']]],
+  ['parsedecimal_135',['ParseDecimal',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a48c94c00406ba1ea92c1b8c3a115d087',1,'Netxtendable::Text::StringExtensions']]],
+  ['parsedecimalordefault_136',['ParseDecimalOrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#ab908cb744fd7e0b23d5886e6c42c73e9',1,'Netxtendable::Text::StringExtensions']]],
+  ['parsedouble_137',['ParseDouble',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a1118f9d89bf41af874f0648a5ab4f726',1,'Netxtendable::Text::StringExtensions']]],
+  ['parsedoubleordefault_138',['ParseDoubleOrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a7219b3caf0d61722e0dcbf337fbe15b9',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseint_139',['ParseInt',['../class_netxtendable_1_1_text_1_1_string_extensions.html#ad3a3675a93c0956a0801a37f12854949',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseint16_140',['ParseInt16',['../class_netxtendable_1_1_text_1_1_string_extensions.html#aaca7678117ce2b8e8ed227fe686b2549',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseint16ordefault_141',['ParseInt16OrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#aba653bc5a15c9db8e8e70dc5cf612bd6',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseint64_142',['ParseInt64',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a88f702de86e9db9e668b5f55b88a90c5',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseint64ordefault_143',['ParseInt64OrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#ac6107120556cef8bd94ecaf7719f3687',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseintordefault_144',['ParseIntOrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a83fffb706838c8135d39b875c4285378',1,'Netxtendable::Text::StringExtensions']]],
+  ['parsesbyte_145',['ParseSByte',['../class_netxtendable_1_1_text_1_1_string_extensions.html#aa3da2c553d4d2448428b1eb5361e06a7',1,'Netxtendable::Text::StringExtensions']]],
+  ['parsesbyteordefault_146',['ParseSByteOrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#ae70ce00a4ce6f5d690854dce2a850049',1,'Netxtendable::Text::StringExtensions']]],
+  ['parsesingle_147',['ParseSingle',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a5b9442284ad8b25c2ef05074dd584e02',1,'Netxtendable::Text::StringExtensions']]],
+  ['parsesingleordefault_148',['ParseSingleOrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a38d8127a943ef3c9f5fa0abb5a55ea4c',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseuint16_149',['ParseUInt16',['../class_netxtendable_1_1_text_1_1_string_extensions.html#acfaaed6fa7ef85a732f205b0ea7667d3',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseuint16ordefault_150',['ParseUInt16OrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a7b39e0d169b34912e11f4c54b5ff66cf',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseuint32_151',['ParseUInt32',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a558ea5d4fd8e9702b8120e2b416660c0',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseuint32ordefault_152',['ParseUInt32OrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#afe47c909369abb494adb48a820c6f96e',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseuint64_153',['ParseUInt64',['../class_netxtendable_1_1_text_1_1_string_extensions.html#ae58e35a6cfe13d96bf1a9d7e6f9c1a9d',1,'Netxtendable::Text::StringExtensions']]],
+  ['parseuint64ordefault_154',['ParseUInt64OrDefault',['../class_netxtendable_1_1_text_1_1_string_extensions.html#aa185a62a1cad1e66a580d6ebe5e961dd',1,'Netxtendable::Text::StringExtensions']]]
 ];
