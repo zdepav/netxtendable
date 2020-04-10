@@ -10,6 +10,13 @@ namespace Netxtendable.Text.Tests {
     public class StringExtensionsTests {
 
         [TestMethod]
+        public void Reverse_Test() {
+            Assert.AreEqual("", "".Reverse());
+            Assert.AreEqual("9876543210", "0123456789".Reverse());
+            Assert.AreEqual("ZyXwVuTsRqPoNmLkJiHgFeDcBa", "aBcDeFgHiJkLmNoPqRsTuVwXyZ".Reverse());
+        }
+
+        [TestMethod]
         public void Match_Test1() {
             var regex = new Regex(@"\d{4}");
             Assert.AreEqual("6854", "s68d4gs6854sdd4s68gesd54".Match(regex).Value);

@@ -18,6 +18,20 @@ namespace Netxtendable.Text {
         /// </summary>
         public static CultureInfo DefaultCulture { get; set; } = CultureInfo.InvariantCulture;
 
+        /// <summary>Reverses given string.</summary>
+        /// <param name="str">String to reverse.</param>
+        /// <returns>Reversed copy of <paramref name="str"/>.</returns>
+        public static string Reverse(this string str) {
+            if (string.IsNullOrEmpty(str)) {
+                return str;
+            }
+            var chars = new char[str.Length];
+            for (int i = 0, last = str.Length - 1; i <= last; ++i) {
+                chars[i] = str[last - i];
+            }
+            return new string(chars);
+        }
+
         /// <summary>
         /// Searches <paramref name="str"/> for the first occurrence of <paramref name="regex"/>.
         /// </summary>
@@ -486,7 +500,7 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
         public static bool IsMatch(this string str, Regex regex) =>
-            regex != null ? regex.IsMatch(str) : throw new ArgumentNullException(nameof(regex));
+            regex?.IsMatch(str) ?? throw new ArgumentNullException(nameof(regex));
 
         /// <summary>
         /// Returns true if <paramref name="pattern"/> finds a match, false otherwise.
