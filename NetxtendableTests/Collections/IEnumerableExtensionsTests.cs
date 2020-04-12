@@ -198,16 +198,58 @@ namespace Netxtendable.Collections.Tests {
         }
 
         [TestMethod]
-        public void NonNull_Test() {
+        public void WhereNotNull_Test() {
             var values = new[] {
                 "123", null, "1", "1234567", null, null, "1234", null, "12345678"
             };
             CollectionAssert.AreEqual(
                 new[] { "123", "1", "1234567", "1234", "12345678" },
-                values.NonNull().ToArray()
+                values.WhereNotNull().ToArray()
             );
             Assert.ThrowsException<ArgumentNullException>(
-                () => (null as IEnumerable<string>).NonNull()
+                () => (null as IEnumerable<string>).WhereNotNull()
+            );
+        }
+
+        [TestMethod]
+        public void WhereNotEmpty_Test1() {
+            var values = new[] {
+                new[] { 1, 2, 3 }, new int[0], new[] { 1 }, null, new int[0], new[] { 1, 2 }
+            };
+            CollectionAssert.AreEqual(
+                new[] { values[0], values[2], values[5] },
+                values.WhereNotEmpty().ToArray()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as IEnumerable<string>).WhereNotEmpty()
+            );
+        }
+
+        [TestMethod]
+        public void WhereNotEmpty_Test2() {
+            var values = new[] {
+                "123", "", " \n", "1234567", null, "", "1234  ", null, "12345678", "   "
+            };
+            CollectionAssert.AreEqual(
+                new[] { "123", " \n", "1234567", "1234  ", "12345678", "   " },
+                values.WhereNotEmpty().ToArray()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as IEnumerable<string>).WhereNotEmpty()
+            );
+        }
+
+        [TestMethod]
+        public void WhereNotWhiteSpace_Test() {
+            var values = new[] {
+                "123", "", " \n", "1234567", null, "", "1234  ", null, "12345678", "   "
+            };
+            CollectionAssert.AreEqual(
+                new[] { "123", "1234567", "1234  ", "12345678" },
+                values.WhereNotWhiteSpace().ToArray()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as IEnumerable<string>).WhereNotWhiteSpace()
             );
         }
 

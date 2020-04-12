@@ -12,9 +12,9 @@
     <Description>A small .NET library with extension functions for some standard types.</Description>
     <Copyright></Copyright>
     <RepositoryType>git</RepositoryType>
-    <Version>4.0.0</Version>
-    <AssemblyVersion>4.0.0.0</AssemblyVersion>
-    <FileVersion>4.0.0.0</FileVersion>
+    <Version>4.1.0</Version>
+    <AssemblyVersion>4.1.0.0</AssemblyVersion>
+    <FileVersion>4.1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

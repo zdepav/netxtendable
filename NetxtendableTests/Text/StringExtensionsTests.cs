@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,6 +15,76 @@ namespace Netxtendable.Text.Tests {
             Assert.AreEqual("", "".Reverse());
             Assert.AreEqual("9876543210", "0123456789".Reverse());
             Assert.AreEqual("ZyXwVuTsRqPoNmLkJiHgFeDcBa", "aBcDeFgHiJkLmNoPqRsTuVwXyZ".Reverse());
+        }
+
+        [TestMethod]
+        public void ToBase64_Test() {
+            Assert.AreEqual("", "".ToBase64());
+            Assert.AreEqual("SGVsbG8gV29ybGQh", "Hello World!".ToBase64());
+            Assert.AreEqual(
+                "AEgAZQBsAGwAbwAgAFcAbwByAGwAZAAgAG8AZgAgAGIAYQBzAGUANgA0ACE=",
+                "Hello World of base64!".ToBase64(Encoding.BigEndianUnicode)
+            );
+            Assert.AreEqual(
+                "dXNpbmcgU3lzdGVtLlRleHQuUmVndWxhckV4cHJlc3Npb25zOw==",
+                "using System.Text.RegularExpressions;".ToBase64()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).ToBase64()
+            );
+        }
+
+        [TestMethod]
+        public void FromBase64_Test() {
+            Assert.AreEqual("", "".FromBase64());
+            Assert.AreEqual("Hello World!", "SGVsbG8gV29ybGQh".FromBase64());
+            Assert.AreEqual(
+                "Hello World of base64!",
+                "AEgAZQBsAGwAbwAgAFcAbwByAGwAZAAgAG8AZgAgAGIAYQBzAGUANgA0ACE="
+                    .FromBase64(Encoding.BigEndianUnicode)
+            );
+            Assert.AreEqual(
+                "using System.Text.RegularExpressions;",
+                "dXNpbmcgU3lzdGVtLlRleHQuUmVndWxhckV4cHJlc3Npb25zOw==".FromBase64()
+            );
+            Assert.AreEqual(
+                "using System.Text.RegularExpressions;",
+                "dXNpbmcgU3lzdGVtLlRleHQuUmVndWxhckV4cHJlc3Npb25zOw".FromBase64()
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).FromBase64()
+            );
+            Assert.ThrowsException<FormatException>(
+                () => "dXNpbmcgU3lz!GVtLlRleHQuUm?ndWxhckV4c$Jlc3Npb25zOw==".FromBase64()
+            );
+        }
+
+        [TestMethod]
+        public void ToByteArray_Test() {
+            CollectionAssert.AreEqual(
+                new byte[] { 72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33 },
+                "Hello World!".ToByteArray()
+            );
+            CollectionAssert.AreEqual(
+                new byte[] {
+                    72, 00, 101, 00, 108, 00, 108, 00, 111, 00, 32, 00,
+                    87, 00, 111, 00, 114, 00, 108, 00, 100, 00, 33, 00
+                },
+                "Hello World!".ToByteArray(Encoding.Unicode)
+            );
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).ToByteArray()
+            );
+        }
+
+        [TestMethod]
+        public void IsAscii_Test() {
+            Assert.IsTrue("".IsAscii());
+            Assert.IsTrue("\x02Hello World!\n\x03".IsAscii());
+            Assert.IsFalse("Unicode is awesome \u2764\ufe0f.".IsAscii());
+            Assert.ThrowsException<ArgumentNullException>(
+                () => (null as string).IsAscii()
+            );
         }
 
         [TestMethod]
@@ -605,6 +676,11 @@ namespace Netxtendable.Text.Tests {
             Assert.AreEqual(15d, "15".ParseDoubleOrDefault());
             Assert.AreEqual(-25d, "-0.25e2".ParseDoubleOrDefault());
             Assert.AreEqual(15d, "Z5".ParseDoubleOrDefault(15.0));
+            var defaultCulture = StringExtensions.DefaultCulture;
+            StringExtensions.DefaultCulture = CultureInfo.GetCultureInfo("cs-CZ");
+            Assert.AreEqual(4d, "15.3".ParseDoubleOrDefault(4d));
+            Assert.AreEqual(15.3d, "15,3".ParseDoubleOrDefault());
+            StringExtensions.DefaultCulture = defaultCulture;
         }
 
         [TestMethod]
@@ -612,6 +688,11 @@ namespace Netxtendable.Text.Tests {
             Assert.AreEqual(15m, "15".ParseDecimalOrDefault());
             Assert.AreEqual(-25m, "-0.25e2".ParseDecimalOrDefault());
             Assert.AreEqual(15m, "Z5".ParseDecimalOrDefault(15m));
+            var defaultCulture = StringExtensions.DefaultCulture;
+            StringExtensions.DefaultCulture = CultureInfo.GetCultureInfo("cs-CZ");
+            Assert.AreEqual(4m, "15.3".ParseDecimalOrDefault(4m));
+            Assert.AreEqual(15.3m, "15,3".ParseDecimalOrDefault());
+            StringExtensions.DefaultCulture = defaultCulture;
         }
 
     }

@@ -22,9 +22,12 @@ var class_netxtendable_1_1_collections_1_1_i_enumerable_extensions =
     [ "MaxBy< T, V >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a01569d12ae6718b89798f5edafdd9fa0", null ],
     [ "MinBy< T, V >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#ae67b21741aaf174946868f2521f1be9a", null ],
     [ "None< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a301d527c110a7f07ee094256cb77cb5e", null ],
-    [ "NonNull< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a67eb1a63012aff140a6372b268a0c322", null ],
     [ "ToDictionary< TKey, TValue >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#aafc5f9245661eed1282600bf6bd6338d", null ],
     [ "WhereNot< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a7e73ca39648f721dc6f036859b2183ea", null ],
+    [ "WhereNotEmpty", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a4be9fa6eaf0a867d0e70bbd1712601af", null ],
+    [ "WhereNotEmpty< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#aa05b6d8425db9ec5b3446a860deadcab", null ],
+    [ "WhereNotNull< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a586b1c6cc82b0460522eebc965932072", null ],
+    [ "WhereNotWhiteSpace", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a83de17c8c4e7b894869e0c60a471855e", null ],
     [ "ZipWithNext< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#ab6781423fddb8d818f4e23e5ab80dafd", null ],
     [ "List< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a669584ab525ccd45d37ea88070d854fd", null ]
 ];

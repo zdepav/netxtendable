@@ -33,6 +33,74 @@ namespace Netxtendable.Text {
         }
 
         /// <summary>
+        /// Encodes the string using Base64. If no encoding is supplied UTF-8 will be used.
+        /// </summary>
+        /// <param name="str">String to encode.</param>
+        /// <param name="encoding">Encoding to use. If null (default) UTF-8 will be used.</param>
+        /// <returns>Base64 representation of <paramref name="str"/>.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="str"/> is null.
+        /// </exception>
+        public static string ToBase64(this string str, Encoding? encoding = null) =>
+            str != null
+                ? Convert.ToBase64String((encoding ?? Encoding.UTF8).GetBytes(str))
+                : throw new ArgumentNullException(nameof(str));
+
+        /// <summary>
+        /// Decodes string from Base64. Automatically adds missing padding if necessary.
+        /// If no encoding is supplied UTF-8 will be used.
+        /// </summary>
+        /// <param name="base64String">Base64 string to decode.</param>
+        /// <param name="encoding">Encoding to use. If null (default) UTF-8 will be used.</param>
+        /// <returns>String represented by <paramref name="base64String"/>.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="base64String"/> is null.
+        /// </exception>
+        /// <exception cref="FormatException">
+        /// Thrown when given string is not a valid Base64 string.
+        /// </exception>
+        public static string FromBase64(this string base64String, Encoding? encoding = null) {
+            if (base64String is null) {
+                throw new ArgumentNullException(nameof(base64String));
+            } else if (base64String.Length == 0) {
+                return "";
+            } else if (base64String.Length % 4 > 0) {
+                base64String += new string('=', 4 - base64String.Length % 4);
+            }
+            return (encoding ?? Encoding.UTF8).GetString(Convert.FromBase64String(base64String));
+        }
+
+        /// <summary>
+        /// Converts the string to a byte array using the given encoding.
+        /// If no encoding is supplied UTF-8 will be used.
+        /// </summary>
+        /// <param name="str">String to convert.</param>
+        /// <param name="encoding">Encoding to use. If null (default) UTF-8 will be used.</param>
+        /// <returns>Byte array representing <paramref name="str"/>.</returns>
+        public static byte[] ToByteArray(this string str, Encoding? encoding = null) =>
+            str != null
+                ? (encoding ?? Encoding.UTF8).GetBytes(str)
+                : throw new ArgumentNullException(nameof(str));
+
+        /// <summary>Verifies if all characters in a given string are ASCII characters.</summary>
+        /// <param name="str">String to check</param>
+        /// <returns>False if any non-ascii characters are found, true otherwise.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="str"/> is null.
+        /// </exception>
+        public static bool IsAscii(this string str) {
+            if (str is null) {
+                throw new ArgumentNullException(nameof(str));
+            }
+            for (var i = 0; i < str.Length; ++i) {
+                if (str[i] > 127) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
         /// Searches <paramref name="str"/> for the first occurrence of <paramref name="regex"/>.
         /// </summary>
         /// <param name="str">String to search in.</param>

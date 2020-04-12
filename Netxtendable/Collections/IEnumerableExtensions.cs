@@ -384,8 +384,53 @@ namespace Netxtendable.Collections {
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="enumerable"/> is null.
         /// </exception>
-        public static IEnumerable<T> NonNull<T>(this IEnumerable<T> enumerable) =>
+        public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T> enumerable) =>
             enumerable.Where(item => !(item is null));
+
+        /// <summary>Removes all null and empty collections from a sequence.</summary>
+        /// <typeparam name="T">
+        /// Type of items in collections in<paramref name="enumerable"/>.
+        /// </typeparam>
+        /// <param name="enumerable"><see cref="IEnumerable{T}"/> to filter.</param>
+        /// <returns>
+        /// <see cref="IEnumerable{T}"/> that contains non-null collections with at least
+        /// one item from the input sequence.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="enumerable"/> is null.
+        /// </exception>
+        public static IEnumerable<ICollection<T>> WhereNotEmpty<T>(
+            this IEnumerable<ICollection<T>> enumerable
+        ) {
+            return enumerable.Where(item => !(item is null) && item.Count > 0);
+        }
+
+        /// <summary>Removes all null and empty strings from a sequence.</summary>
+        /// <param name="enumerable"><see cref="IEnumerable{T}"/> to filter.</param>
+        /// <returns>
+        /// <see cref="IEnumerable{T}"/> that contains non-null strings with at least
+        /// one character from the input sequence.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="enumerable"/> is null.
+        /// </exception>
+        public static IEnumerable<string> WhereNotEmpty(this IEnumerable<string> enumerable) =>
+            enumerable.Where(item => !string.IsNullOrEmpty(item));
+
+        /// <summary>
+        /// Removes all null values and strings that are either empty or consist only of whitespace
+        /// characters from a sequence.
+        /// </summary>
+        /// <param name="enumerable"><see cref="IEnumerable{T}"/> to filter.</param>
+        /// <returns>
+        /// <see cref="IEnumerable{T}"/> that contains non-null strings with at least
+        /// one none-whitespace character from the input sequence.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="enumerable"/> is null.
+        /// </exception>
+        public static IEnumerable<string> WhereNotWhiteSpace(this IEnumerable<string> enumerable) =>
+            enumerable.Where(item => !string.IsNullOrWhiteSpace(item));
 
         /// <summary>Filters a sequence of strings based on a regular expression.</summary>
         /// <param name="enumerable"><see cref="IEnumerable{T}"/> to filter.</param>
