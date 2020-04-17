@@ -11,3 +11,9 @@ dotnet_diagnostic.CS8714.severity = error
 
 # CS8625: Cannot convert null literal to non-nullable reference type.
 dotnet_diagnostic.CS8625.severity = error
+
+# CS3002: Return type is not CLS-compliant
+dotnet_diagnostic.CS3002.severity = error
+
+# CS3001: Argument type is not CLS-compliant
+dotnet_diagnostic.CS3001.severity = error

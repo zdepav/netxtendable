@@ -21,6 +21,7 @@ namespace Netxtendable.Text {
         /// <summary>Reverses given string.</summary>
         /// <param name="str">String to reverse.</param>
         /// <returns>Reversed copy of <paramref name="str"/>.</returns>
+        [CLSCompliant(true)]
         public static string Reverse(this string str) {
             if (string.IsNullOrEmpty(str)) {
                 return str;
@@ -42,9 +43,9 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/> is null.
         /// </exception>
         public static string ToBase64(this string str, Encoding? encoding = null) =>
-            str != null
-                ? Convert.ToBase64String((encoding ?? Encoding.UTF8).GetBytes(str))
-                : throw new ArgumentNullException(nameof(str));
+            str is null
+                ? throw new ArgumentNullException(nameof(str))
+                : Convert.ToBase64String((encoding ?? Encoding.UTF8).GetBytes(str));
 
         /// <summary>
         /// Decodes string from Base64. Automatically adds missing padding if necessary.
@@ -78,9 +79,9 @@ namespace Netxtendable.Text {
         /// <param name="encoding">Encoding to use. If null (default) UTF-8 will be used.</param>
         /// <returns>Byte array representing <paramref name="str"/>.</returns>
         public static byte[] ToByteArray(this string str, Encoding? encoding = null) =>
-            str != null
-                ? (encoding ?? Encoding.UTF8).GetBytes(str)
-                : throw new ArgumentNullException(nameof(str));
+            str is null
+                ? throw new ArgumentNullException(nameof(str))
+                : (encoding ?? Encoding.UTF8).GetBytes(str);
 
         /// <summary>Verifies if all characters in a given string are ASCII characters.</summary>
         /// <param name="str">String to check</param>
@@ -113,7 +114,9 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
         public static Match Match(this string str, Regex regex) =>
-            regex != null ? regex.Match(str) : throw new ArgumentNullException(nameof(regex));
+            regex is null
+                ? throw new ArgumentNullException(nameof(regex))
+                : regex.Match(str);
 
         /// <summary>
         /// Searches <paramref name="str"/> for the first occurrence of <paramref name="pattern"/>.
@@ -143,7 +146,9 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
         public static IEnumerable<Match> Matches(this string str, Regex regex) =>
-            regex != null ? regex.Matches(str) : throw new ArgumentNullException(nameof(regex));
+            regex is null
+                ? throw new ArgumentNullException(nameof(regex))
+                : regex.Matches(str);
 
         /// <summary>
         /// Searches <paramref name="str"/> for all occurrences of <paramref name="pattern"/>.
@@ -173,9 +178,9 @@ namespace Netxtendable.Text {
         /// <paramref name="replacement"/> is null.
         /// </exception>
         public static string Replace(this string str, Regex regex, string replacement) =>
-            regex != null
-                ? regex.Replace(str, replacement)
-                : throw new ArgumentNullException(nameof(regex));
+            regex is null
+                ? throw new ArgumentNullException(nameof(regex))
+                : regex.Replace(str, replacement);
 
         /// <summary>
         /// Replaces all occurences of <paramref name="regex"/> in <paramref name="str"/> by
@@ -192,9 +197,9 @@ namespace Netxtendable.Text {
         /// <paramref name="evaluator"/> is null.
         /// </exception>
         public static string Replace(this string str, Regex regex, MatchEvaluator evaluator) =>
-            regex != null
-                ? regex.Replace(str, evaluator)
-                : throw new ArgumentNullException(nameof(regex));
+            regex is null
+                ? throw new ArgumentNullException(nameof(regex))
+                : regex.Replace(str, evaluator);
 
         /// <summary>
         /// Replaces all occurences of <paramref name="needle"/> in <paramref name="str"/> by
@@ -384,7 +389,9 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
         public static string[] Split(this string str, Regex regex) =>
-            regex != null ? regex.Split(str) : throw new ArgumentNullException(nameof(regex));
+            regex is null
+                ? throw new ArgumentNullException(nameof(regex))
+                : regex.Split(str);
 
         /// <summary>
         /// Splits <paramref name="str"/> into an array of substrings at the parts matched by
@@ -942,7 +949,8 @@ namespace Netxtendable.Text {
             if (count < 0) {
                 throw new ArgumentOutOfRangeException(
                     nameof(count),
-                    "Repetition count can't be negative.");
+                    "Repetition count can't be negative."
+                );
             } else if (count == 0) {
                 return string.Empty;
             } else if (count == 1) {
@@ -972,6 +980,7 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/> represents a value lower than
         /// <see cref="SByte.MinValue"/> or greater than <see cref="SByte.MaxValue"/>.
         /// </exception>
+        [CLSCompliant(false)]
         public static sbyte ParseSByte(this string str, CultureInfo? culture = null) =>
             sbyte.Parse(str, culture ?? DefaultCulture);
 
@@ -1032,6 +1041,7 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/> represents a value lower than
         /// <see cref="UInt16.MinValue"/> or greater than <see cref="UInt16.MaxValue"/>.
         /// </exception>
+        [CLSCompliant(false)]
         public static ushort ParseUInt16(this string str, CultureInfo? culture = null) =>
             ushort.Parse(str, culture ?? DefaultCulture);
 
@@ -1072,6 +1082,7 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/> represents a value lower than
         /// <see cref="UInt32.MinValue"/> or greater than <see cref="UInt32.MaxValue"/>.
         /// </exception>
+        [CLSCompliant(false)]
         public static uint ParseUInt32(this string str, CultureInfo? culture = null) =>
             uint.Parse(str, culture ?? DefaultCulture);
 
@@ -1112,6 +1123,7 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/> represents a value lower than
         /// <see cref="UInt64.MinValue"/> or greater than <see cref="UInt64.MaxValue"/>.
         /// </exception>
+        [CLSCompliant(false)]
         public static ulong ParseUInt64(this string str, CultureInfo? culture = null) =>
             ulong.Parse(str, culture ?? DefaultCulture);
 
@@ -1189,6 +1201,7 @@ namespace Netxtendable.Text {
         /// Value that should be returned in case of failure. Default is 0.
         /// </param>
         /// <returns>Parsed value or <paramref name="default"/>.</returns>
+        [CLSCompliant(false)]
         public static sbyte ParseSByteOrDefault(
             this string str,
             sbyte @default = 0,
@@ -1261,6 +1274,7 @@ namespace Netxtendable.Text {
         /// Value that should be returned in case of failure. Default is 0.
         /// </param>
         /// <returns>Parsed value or <paramref name="default"/>.</returns>
+        [CLSCompliant(false)]
         public static ushort ParseUInt16OrDefault(
             this string str,
             ushort @default = 0,
@@ -1309,6 +1323,7 @@ namespace Netxtendable.Text {
         /// Value that should be returned in case of failure. Default is 0.
         /// </param>
         /// <returns>Parsed value or <paramref name="default"/>.</returns>
+        [CLSCompliant(false)]
         public static uint ParseUInt32OrDefault(
             this string str,
             uint @default = 0U,
@@ -1357,6 +1372,7 @@ namespace Netxtendable.Text {
         /// Value that should be returned in case of failure. Default is 0.
         /// </param>
         /// <returns>Parsed value or <paramref name="default"/>.</returns>
+        [CLSCompliant(false)]
         public static ulong ParseUInt64OrDefault(
             this string str,
             ulong @default = 0UL,
