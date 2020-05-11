@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D53BD75E-D232-41FB-8B93-B1A7DA45C407}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Netxtendable</RootNamespace>
+    <AssemblyName>Netxtendable-NetFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET_FRAMEWORK</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Netxtendable\Collections\IEnumerableExtensions.cs">
+      <Link>Collections\IEnumerableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\Collections\IEnumerableExtensions.Deconstruct.cs">
+      <Link>Collections\IEnumerableExtensions.Deconstruct.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\Collections\IListExtensions.cs">
+      <Link>Collections\IListExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\Collections\TupleExtensions.cs">
+      <Link>Collections\TupleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\Collections\ValueTupleExtensions.cs">
+      <Link>Collections\ValueTupleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\EnumerableExtras.cs">
+      <Link>EnumerableExtras.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\Text\EncodingExtensions.cs">
+      <Link>Text\EncodingExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\Text\Int32Extensions.cs">
+      <Link>Text\Int32Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\Text\StringExtensions.cs">
+      <Link>Text\StringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\Utils\RandomExtensions.cs">
+      <Link>Utils\RandomExtensions.cs</Link>
+    </Compile>
+    <Compile Include="assembly.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"C:\My Program Files\bin\nuget.exe" pack "$(ProjectPath)" -Prop Configuration=$(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
+</Project>

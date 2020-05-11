@@ -1,4 +1,4 @@
-using System;
+#nullable enable
 using System.Text;
 
 namespace Netxtendable.Text {

@@ -1,6 +1,9 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
+#if NET_CORE
 using System.Diagnostics.CodeAnalysis;
+#endif
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -21,7 +24,6 @@ namespace Netxtendable.Text {
         /// <summary>Reverses given string.</summary>
         /// <param name="str">String to reverse.</param>
         /// <returns>Reversed copy of <paramref name="str"/>.</returns>
-        [CLSCompliant(true)]
         public static string Reverse(this string str) {
             if (string.IsNullOrEmpty(str)) {
                 return str;
@@ -148,8 +150,11 @@ namespace Netxtendable.Text {
         public static IEnumerable<Match> Matches(this string str, Regex regex) =>
             regex is null
                 ? throw new ArgumentNullException(nameof(regex))
+#if NET_CORE
                 : regex.Matches(str);
-
+#else
+                : regex.Matches(str).OfType<Match>();
+#endif
         /// <summary>
         /// Searches <paramref name="str"/> for all occurrences of <paramref name="pattern"/>.
         /// </summary>
@@ -163,7 +168,11 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null.
         /// </exception>
         public static IEnumerable<Match> Matches(this string str, string pattern) =>
+#if NET_CORE
             Regex.Matches(str, pattern);
+#else
+            Regex.Matches(str, pattern).OfType<Match>();
+#endif
 
         /// <summary>
         /// Replaces all occurences of <paramref name="regex"/> in <paramref name="str"/> by
@@ -418,7 +427,9 @@ namespace Netxtendable.Text {
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
+#if NET_CORE
         [return: NotNullIfNotNull("default")]
+#endif
         public static string? GetMatched(this string str, Regex regex, string? @default = null) =>
             regex is null
                 ? throw new ArgumentNullException(nameof(regex))
@@ -438,7 +449,9 @@ namespace Netxtendable.Text {
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null.
         /// </exception>
+#if NET_CORE
         [return: NotNullIfNotNull("default")]
+#endif
         public static string? GetMatched(
             this string str,
             string pattern,
@@ -463,7 +476,9 @@ namespace Netxtendable.Text {
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/> or <paramref name="regex"/> is null.
         /// </exception>
+#if NET_CORE
         [return: NotNullIfNotNull("default")]
+#endif
         public static string? GetMatchedGroup(
             this string str,
             Regex regex,
@@ -493,7 +508,9 @@ namespace Netxtendable.Text {
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="str"/> or <paramref name="pattern"/> is null.
         /// </exception>
+#if NET_CORE
         [return: NotNullIfNotNull("default")]
+#endif
         public static string? GetMatchedGroup(
             this string str,
             string pattern,
@@ -522,7 +539,9 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/>, <paramref name="regex"/> or
         /// <paramref name="groupName"/> is null.
         /// </exception>
+#if NET_CORE
         [return: NotNullIfNotNull("default")]
+#endif
         public static string? GetMatchedGroup(
             this string str,
             Regex regex,
@@ -553,7 +572,9 @@ namespace Netxtendable.Text {
         /// Thrown when <paramref name="str"/>, <paramref name="pattern"/> or
         /// <paramref name="groupName"/> is null.
         /// </exception>
+#if NET_CORE
         [return: NotNullIfNotNull("default")]
+#endif
         public static string? GetMatchedGroup(
             this string str,
             string pattern,
@@ -685,7 +706,7 @@ namespace Netxtendable.Text {
             ConvertLineEndings(str, "\u2028");
 
         /// <summary>
-        /// Similar to <see cref="string.Split(char,StringSplitOptions)"/> but generetes string
+        /// Similar to <see cref="string.Split(char[],StringSplitOptions)"/> but generetes string
         /// segments lazily as the returned <see cref="IEnumerable{T}"/> is enumerated.
         /// </summary>
         /// <param name="str">String to split.</param>
@@ -730,7 +751,7 @@ namespace Netxtendable.Text {
         }
 
         /// <summary>
-        /// Similar to <see cref="string.Split(char,StringSplitOptions)"/> but generetes string
+        /// Similar to <see cref="string.Split(char[],StringSplitOptions)"/> but generetes string
         /// segments lazily as the returned <see cref="IEnumerable{T}"/> is enumerated.
         /// </summary>
         /// <param name="str">String to split.</param>
@@ -778,7 +799,7 @@ namespace Netxtendable.Text {
         }
 
         /// <summary>
-        /// Similar to <see cref="string.Split(char,StringSplitOptions)"/> but generetes string
+        /// Similar to <see cref="string.Split(string[],StringSplitOptions)"/> but generetes string
         /// segments lazily as the returned <see cref="IEnumerable{T}"/> is enumerated.
         /// </summary>
         /// <param name="str">String to split.</param>
@@ -810,14 +831,18 @@ namespace Netxtendable.Text {
             int start = 0, end;
             while ((end = str.IndexOf(delimiter, start, StringComparison.Ordinal)) >= 0) {
                 if (end > start) {
+#if NET_CORE
                     yield return str[start..end];
+#else
+                    yield return str.Substring(start, end - start);
+#endif
                 } else if (includeEmpty) {
                     yield return string.Empty;
                 }
                 start = end + delimiter.Length;
             }
             if (start < str.Length) {
-                yield return str[start..str.Length];
+                yield return str.Substring(start);
             } else if (includeEmpty) {
                 yield return string.Empty;
             }

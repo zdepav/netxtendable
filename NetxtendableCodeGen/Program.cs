@@ -279,6 +279,7 @@ namespace NetxtendableCodeGen {
             ) {
                 NewLine = "\n"
             };
+            sw.WriteLine("#nullable enable");
             sw.WriteLine("using System;");
             sw.WriteLine("using System.Collections.Generic;");
             sw.WriteLine();
@@ -346,6 +347,7 @@ namespace NetxtendableCodeGen {
             ) {
                 NewLine = "\n"
             };
+            sw.WriteLine("#nullable enable");
             sw.WriteLine("using System;");
             sw.WriteLine("using System.Collections.Generic;");
             sw.WriteLine();
@@ -420,6 +422,7 @@ namespace NetxtendableCodeGen {
             ) {
                 NewLine = "\n"
             };
+            sw.WriteLine("#nullable enable");
             sw.WriteLine("using System;");
             sw.WriteLine("using System.Collections.Generic;");
             sw.WriteLine();
@@ -483,6 +486,7 @@ namespace NetxtendableCodeGen {
             ) {
                 NewLine = "\n"
             };
+            sw.WriteLine("#nullable enable");
             sw.WriteLine("using System;");
             sw.WriteLine("using System.Collections.Generic;");
             sw.WriteLine();

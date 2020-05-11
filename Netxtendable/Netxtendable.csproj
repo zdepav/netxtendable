@@ -10,11 +10,19 @@
     <Authors>Zdeněk Pavlátka</Authors>
     <Company />
     <Description>A small .NET library with extension functions for some standard types.</Description>
-    <Copyright></Copyright>
+    <Copyright>Copyright © Zdeněk Pavlátka 2020</Copyright>
     <RepositoryType>git</RepositoryType>
-    <Version>4.2.0</Version>
-    <AssemblyVersion>4.2.0.0</AssemblyVersion>
-    <FileVersion>4.2.0.0</FileVersion>
+    <Version>4.2.2</Version>
+    <AssemblyVersion>4.2.2.0</AssemblyVersion>
+    <FileVersion>4.2.2.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;NET_CORE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;NET_CORE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

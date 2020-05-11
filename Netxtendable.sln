@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetxtendableTests", "Netxte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetxtendableCodeGen", "NetxtendableCodeGen\NetxtendableCodeGen.csproj", "{95FC748A-9950-4468-A267-0A1C44063807}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetxtendableNetFramework", "NetxtendableNetFramework\NetxtendableNetFramework.csproj", "{D53BD75E-D232-41FB-8B93-B1A7DA45C407}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{95FC748A-9950-4468-A267-0A1C44063807}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95FC748A-9950-4468-A267-0A1C44063807}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95FC748A-9950-4468-A267-0A1C44063807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D53BD75E-D232-41FB-8B93-B1A7DA45C407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D53BD75E-D232-41FB-8B93-B1A7DA45C407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D53BD75E-D232-41FB-8B93-B1A7DA45C407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D53BD75E-D232-41FB-8B93-B1A7DA45C407}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

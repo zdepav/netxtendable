@@ -1,9 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"functions_func_s.html":[1,2,1,13],
-"functions_func_t.html":[1,2,1,14],
-"functions_func_u.html":[1,2,1,15],
-"functions_func_w.html":[1,2,1,16],
 "functions_func_x.html":[1,2,1,17],
 "functions_func_z.html":[1,2,1,18],
 "functions_g.html":[1,2,0,4],
@@ -26,10 +22,10 @@ var NAVTREEINDEX1 =
 "index.html":[],
 "namespace_netxtendable.html":[0,0,0],
 "namespace_netxtendable.html":[1,0,0],
-"namespace_netxtendable_1_1_collections.html":[1,0,0,0],
 "namespace_netxtendable_1_1_collections.html":[0,0,0,0],
-"namespace_netxtendable_1_1_text.html":[1,0,0,1],
+"namespace_netxtendable_1_1_collections.html":[1,0,0,0],
 "namespace_netxtendable_1_1_text.html":[0,0,0,1],
+"namespace_netxtendable_1_1_text.html":[1,0,0,1],
 "namespace_netxtendable_1_1_utils.html":[1,0,0,2],
 "namespace_netxtendable_1_1_utils.html":[0,0,0,2],
 "namespaces.html":[0,0],

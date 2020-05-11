@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -200,6 +201,7 @@ namespace Netxtendable.Utils {
                 ? throw new ArgumentNullException(nameof(random))
                 : random.NextDouble(2) < 0.5;
 
+#if NET_CORE
         /// <summary>Returns a random integer from the given range.</summary>
         /// <param name="random"><see cref="Random"/> instance to use.</param>
         /// <param name="range"><see cref="Range"/> to return value from.</param>
@@ -223,6 +225,7 @@ namespace Netxtendable.Utils {
                 range.End.GetOffset(int.MaxValue)
             );
         }
+#endif
 
         /// <summary>Fills a given array with random non-negative integers.</summary>
         /// <param name="random"><see cref="Random"/> instance to use.</param>
@@ -267,7 +270,9 @@ namespace Netxtendable.Utils {
                 );
             }
             if (max == 1) {
-                Array.Fill(buffer, 0);
+                for (var i = 0; i < buffer.Length; ++i) {
+                    buffer[i] = 0;
+                }
             } else {
                 for (var i = 0; i < buffer.Length; ++i) {
                     buffer[i] = random.Next(max);
@@ -300,7 +305,9 @@ namespace Netxtendable.Utils {
                     "Maximum can't be lower than or equal to minimum."
                 );
             } else if (min + 1 == max) {
-                Array.Fill(buffer, min);
+                for (var i = 0; i < buffer.Length; ++i) {
+                    buffer[i] = min;
+                }
             } else {
                 for (var i = 0; i < buffer.Length; ++i) {
                     buffer[i] = random.Next(min, max);
@@ -308,6 +315,7 @@ namespace Netxtendable.Utils {
             }
         }
 
+#if NET_CORE
         /// <summary>Fills a given array with random integers from a given range.</summary>
         /// <param name="random"><see cref="Random"/> instance to use.</param>
         /// <param name="buffer">Array to fill with random values.</param>
@@ -326,6 +334,7 @@ namespace Netxtendable.Utils {
                 range.Start.GetOffset(int.MaxValue),
                 range.End.GetOffset(int.MaxValue)
             );
+#endif
 
         /// <summary>
         /// Fills a given array with random values from between 0 (inclusive) and 1 (exclusive).
@@ -479,7 +488,9 @@ namespace Netxtendable.Utils {
             }
             var buffer = new int[count];
             if (max == 1) {
-                Array.Fill(buffer, 0);
+                for (var i = 0; i < buffer.Length; ++i) {
+                    buffer[i] = 0;
+                }
             } else {
                 for (var i = 0; i < buffer.Length; ++i) {
                     buffer[i] = random.Next(max);
@@ -523,7 +534,9 @@ namespace Netxtendable.Utils {
             }
             var buffer = new int[count];
             if (min + 1 == max) {
-                Array.Fill(buffer, min);
+                for (var i = 0; i < buffer.Length; ++i) {
+                    buffer[i] = min;
+                }
             } else {
                 for (var i = 0; i < buffer.Length; ++i) {
                     buffer[i] = random.Next(min, max);
@@ -532,6 +545,7 @@ namespace Netxtendable.Utils {
             return buffer;
         }
 
+#if NET_CORE
         /// <summary>Creates an array with random integers from a given range.</summary>
         /// <param name="random"><see cref="Random"/> instance to use.</param>
         /// <param name="count">Length of the generated array.</param>
@@ -551,6 +565,7 @@ namespace Netxtendable.Utils {
                 range.Start.GetOffset(int.MaxValue),
                 range.End.GetOffset(int.MaxValue)
             );
+#endif
 
         /// <summary>
         /// Creates an array with random values between 0 (inclusive) and 1 (exclusive).
@@ -742,6 +757,7 @@ namespace Netxtendable.Utils {
             }
         }
 
+#if NET_CORE
         /// <summary>
         /// Creates <see cref="IEnumerable{T}"/> with infinite sequence of random integers from the
         /// given range.
@@ -764,6 +780,7 @@ namespace Netxtendable.Utils {
                 range.Start.GetOffset(int.MaxValue),
                 range.End.GetOffset(int.MaxValue)
             );
+#endif
 
         /// <summary>
         /// Creates <see cref="IEnumerable{T}"/> with infinite sequence of random values between 0
@@ -913,7 +930,10 @@ namespace Netxtendable.Utils {
             }
             var array = new T[count];
             if (list.Count == 1) {
-                Array.Fill(array, list[0]);
+                var item = list[0];
+                for (var i = 0; i < array.Length; ++i) {
+                    array[i] = item;
+                }
             } else {
                 for (var i = 0; i < count; ++i) {
                     array[i] = list[random.Next(list.Count)];
@@ -1078,7 +1098,10 @@ namespace Netxtendable.Utils {
             }
             var array = new char[count];
             if (str.Length == 1) {
-                Array.Fill(array, str[0]);
+                var ch = str[0];
+                for (var i = 0; i < array.Length; ++i) {
+                    array[i] = ch;
+                }
             } else {
                 for (var i = 0; i < count; ++i) {
                     array[i] = str[random.Next(str.Length)];
