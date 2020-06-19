@@ -22,6 +22,7 @@ var class_netxtendable_1_1_collections_1_1_i_enumerable_extensions =
     [ "MaxBy< T, V >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a01569d12ae6718b89798f5edafdd9fa0", null ],
     [ "MinBy< T, V >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#ae67b21741aaf174946868f2521f1be9a", null ],
     [ "None< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a301d527c110a7f07ee094256cb77cb5e", null ],
+    [ "Replace< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a79c2b4dee94208cdb3e88ffaa83f6b75", null ],
     [ "ToDictionary< TKey, TValue >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#aafc5f9245661eed1282600bf6bd6338d", null ],
     [ "WhereNot< T >", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a7e73ca39648f721dc6f036859b2183ea", null ],
     [ "WhereNotEmpty", "class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a4be9fa6eaf0a867d0e70bbd1712601af", null ],

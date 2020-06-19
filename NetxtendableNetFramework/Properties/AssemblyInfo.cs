@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Netxtendable-NetFramework")]
+[assembly: AssemblyTitle("Netxtendable")]
 [assembly: AssemblyDescription("A small .NET library with extension functions for some standard types.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Zdeněk Pavlátka")]

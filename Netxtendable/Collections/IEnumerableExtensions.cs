@@ -245,6 +245,51 @@ namespace Netxtendable.Collections {
                 : enumerable.All(t => !predicate(t));
 
         /// <summary>
+        /// Returns a sequence equivalent to <paramref name="enumerable"/> with item at the given
+        /// index replaced by a new value. If <paramref name="index"/> is outside
+        /// <paramref name="enumerable"/> The returned sequence is the same as
+        /// <paramref name="enumerable"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of items in <paramref name="enumerable"/>.</typeparam>
+        /// <param name="enumerable"><see cref="IEnumerable{T}"/> to use.</param>
+        /// <param name="index">Index of the item that should be replaced.</param>
+        /// <param name="newItem">
+        /// Item that should be used instead of the item at the given index.
+        /// </param>
+        /// <returns>
+        /// Sequence equivalent to <paramref name="enumerable"/> with item at the given index
+        /// replaced by a new value.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="enumerable"/> is null.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when <paramref name="index"/> is negative.
+        /// </exception>
+        public static IEnumerable<T> Replace<T>(
+            this IEnumerable<T> enumerable,
+            int index,
+            T newItem
+        ) {
+            if (enumerable is null) {
+                throw new ArgumentNullException(nameof(enumerable));
+            }
+            if (index < 0) {
+                throw new ArgumentOutOfRangeException(
+                    nameof(index),
+                    index,
+                    "Index can't be negative."
+                );
+            }
+            using var enumerator = enumerable.GetEnumerator();
+            var i = 0;
+            while (enumerator.MoveNext()) {
+                yield return i == index ? newItem : enumerator.Current;
+                ++i;
+            }
+        }
+
+        /// <summary>
         /// Calls <paramref name="action"/> for each element of <paramref name="enumerable"/>
         /// </summary>
         /// <typeparam name="T">Type of items in <paramref name="enumerable"/>.</typeparam>
