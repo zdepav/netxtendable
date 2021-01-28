@@ -48,7 +48,5 @@ namespace Netxtendable.Extensions.Text.Tests {
                 "hundred fourty-six thousand seven hundred twenty-eighth",
                 2135946728.ToWordsOrdinal());
         }
-
     }
-
 }

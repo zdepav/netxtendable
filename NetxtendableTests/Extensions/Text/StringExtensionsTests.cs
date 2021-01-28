@@ -694,7 +694,5 @@ namespace Netxtendable.Extensions.Text.Tests {
             Assert.AreEqual(15.3m, "15,3".ParseDecimalOrDefault());
             NetxtendableConfig.DefaultCulture = defaultCulture;
         }
-
     }
-
 }

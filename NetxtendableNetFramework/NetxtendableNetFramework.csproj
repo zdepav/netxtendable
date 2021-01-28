@@ -67,6 +67,9 @@
     <Compile Include="..\Netxtendable\EnumerableExtras.cs">
       <Link>EnumerableExtras.cs</Link>
     </Compile>
+    <Compile Include="..\Netxtendable\Extensions\Numerics\NumberExtensions.cs">
+      <Link>Extensions\Numerics\NumberExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Netxtendable\Extensions\Text\CharExtensions.cs">
       <Link>Extensions\Text\CharExtensions.cs</Link>
     </Compile>

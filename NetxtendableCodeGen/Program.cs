@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 
@@ -576,6 +577,77 @@ namespace NetxtendableCodeGen {
             sw.WriteLine("}");
         }
 
+        private static void GenereateValueNumberExtensionsClass() {
+            using var sw = new StreamWriter(
+                Path.Combine(
+                    targetDirectory,
+                    "Extensions",
+                    "Numerics",
+                    "NumberExtensions.cs"
+                )
+            ) {
+                NewLine = "\n"
+            };
+            sw.WriteLine("#nullable enable");
+            sw.WriteLine("using System;");
+            sw.WriteLine("#if NET_CORE");
+            sw.WriteLine("using System.Numerics;");
+            sw.WriteLine("#endif");
+            sw.WriteLine("using System.Runtime.CompilerServices ;");
+            sw.WriteLine();
+            sw.WriteLine("// GENERATED CODE - DO NOT MODIFY");
+            sw.WriteLine();
+            sw.WriteLine("namespace Netxtendable.Extensions.Numerics {");
+            sw.WriteLine();
+            sw.WriteLine(
+                "    /// <summary>Class with extension methods for all standard integer types" +
+                "</summary>"
+            );
+            sw.WriteLine("    public static class IntegerExtensions {");
+            foreach (var (type, cls) in new[] {
+                ("sbyte", false), ("byte", true), ("short", true), ("ushort", false),
+                ("int", true), ("uint", false), ("long", true), ("ulong", false),
+                ("BigInteger", true), ("float", true), ("double", true), ("decimal", true)
+            }) {
+                sw.WriteLine();
+                if (type == "BigInteger") {
+                    sw.WriteLine("#if NET_CORE");
+                }
+                sw.WriteLine("        /// <summary>Clamps a value between two bounds</summary>");
+                sw.WriteLine("        /// <param name=\"value\">Value to clamp</param>");
+                sw.WriteLine("        /// <param name=\"min\">Minimum</param>");
+                sw.WriteLine("        /// <param name=\"max\">Maximum</param>");
+                sw.WriteLine(
+                    "        /// <remarks>If max &lt; min the result is undefined</remarks>"
+                );
+                sw.WriteLine("        /// <returns>");
+                sw.WriteLine(
+                    "        /// <paramref name=\"min\"/> if <paramref name=\"value\"/> &lt;" +
+                    " <paramref name=\"min\"/>,"
+                );
+                sw.WriteLine(
+                    "        /// <paramref name=\"max\"/> if <paramref name=\"value\"/> &gt;" +
+                    " <paramref name=\"max\"/>,"
+                );
+                sw.WriteLine("        /// <paramref name=\"value\"/> otherwise");
+                sw.WriteLine("        /// </returns>");
+                if (!cls) {
+                    sw.WriteLine("        [CLSCompliant(false)]");
+                }
+                sw.WriteLine("        [MethodImpl(MethodImplOptions.AggressiveInlining)]");
+                sw.WriteLine(
+                    $"        public static {type} Clamp(this {type} value, {type} min, {type}" +
+                    " max) =>"
+                );
+                sw.WriteLine("            value < min ? min : value > max ? max : value;");
+                if (type == "BigInteger") {
+                    sw.WriteLine("#endif");
+                }
+            }
+            sw.WriteLine("    }");
+            sw.WriteLine("}");
+        }
+
         private static void GenereateTupleToCollectionMethodsTests(
             StreamWriter sw, bool valueTuple
         ) {
@@ -999,6 +1071,7 @@ namespace NetxtendableCodeGen {
             GenereateIEnumerableExtensionsClass();
             GenereateTupleExtensionsClass();
             GenereateValueTupleExtensionsClass();
+            GenereateValueNumberExtensionsClass();
             // tests
             GenereateIListExtensionsClassTests();
             GenereateIEnumerableExtensionsClassTests();

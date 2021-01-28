@@ -12,9 +12,9 @@
     <Description>A .NET library with extension functions for some standard types.</Description>
     <Copyright>Copyright © Zdeněk Pavlátka 2021</Copyright>
     <RepositoryType>git</RepositoryType>
-    <Version>5.0.0</Version>
-    <AssemblyVersion>5.0.0.0</AssemblyVersion>
-    <FileVersion>5.0.0.0</FileVersion>
+    <Version>5.1.0</Version>
+    <AssemblyVersion>5.1.0.0</AssemblyVersion>
+    <FileVersion>5.1.0.0</FileVersion>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
@@ -40,6 +40,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\Numerics\" />
   </ItemGroup>
 
 </Project>

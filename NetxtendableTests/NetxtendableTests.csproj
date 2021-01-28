@@ -23,4 +23,8 @@
     <ProjectReference Include="..\NetxtendableNet5\NetxtendableNet5.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\Numerics\" />
+  </ItemGroup>
+
 </Project>

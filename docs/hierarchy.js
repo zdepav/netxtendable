@@ -9,6 +9,7 @@ var hierarchy =
     [ "Netxtendable.Extensions.Collections.IEnumerableExtensions", "class_netxtendable_1_1_extensions_1_1_collections_1_1_i_enumerable_extensions.html", null ],
     [ "Netxtendable.Extensions.Collections.IListExtensions", "class_netxtendable_1_1_extensions_1_1_collections_1_1_i_list_extensions.html", null ],
     [ "Netxtendable.Extensions.Text.Int32Extensions", "class_netxtendable_1_1_extensions_1_1_text_1_1_int32_extensions.html", null ],
+    [ "Netxtendable.Extensions.Numerics.IntegerExtensions", "class_netxtendable_1_1_extensions_1_1_numerics_1_1_integer_extensions.html", null ],
     [ "Netxtendable.NetxtendableConfig", "class_netxtendable_1_1_netxtendable_config.html", null ],
     [ "Netxtendable.Extensions.Utils.RandomExtensions", "class_netxtendable_1_1_extensions_1_1_utils_1_1_random_extensions.html", null ],
     [ "Netxtendable.Extensions.Text.StringExtensions", "class_netxtendable_1_1_extensions_1_1_text_1_1_string_extensions.html", null ],

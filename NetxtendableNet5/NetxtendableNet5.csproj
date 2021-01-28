@@ -12,9 +12,9 @@
     <Description>A .NET library with extension functions for some standard types.</Description>
     <Copyright>Copyright © Zdeněk Pavlátka 2021</Copyright>
     <RepositoryType>git</RepositoryType>
-    <Version>5.0.0</Version>
-    <AssemblyVersion>5.0.0.0</AssemblyVersion>
-    <FileVersion>5.0.0.0</FileVersion>
+    <Version>5.1.0</Version>
+    <AssemblyVersion>5.1.0.0</AssemblyVersion>
+    <FileVersion>5.1.0.0</FileVersion>
     <AssemblyName>Netxtendable</AssemblyName>
   </PropertyGroup>
 
@@ -43,6 +43,7 @@
     <Compile Include="..\Netxtendable\Extensions\Collections\TupleExtensions.cs" Link="Extensions\Collections\TupleExtensions.cs" />
     <Compile Include="..\Netxtendable\Extensions\Collections\ValueTupleExtensions.cs" Link="Extensions\Collections\ValueTupleExtensions.cs" />
     <Compile Include="..\Netxtendable\EnumerableExtras.cs" Link="EnumerableExtras.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Numerics\NumberExtensions.cs" Link="Extensions\Numerics\NumberExtensions.cs" />
     <Compile Include="..\Netxtendable\Extensions\Text\CharExtensions.cs" Link="Extensions\Text\CharExtensions.cs" />
     <Compile Include="..\Netxtendable\Extensions\Text\EncodingExtensions.cs" Link="Extensions\Text\EncodingExtensions.cs" />
     <Compile Include="..\Netxtendable\Extensions\Text\Int32Extensions.cs" Link="Extensions\Text\Int32Extensions.cs" />
@@ -61,6 +62,7 @@
 
   <ItemGroup>
     <Folder Include="Extensions\Collections\" />
+    <Folder Include="Extensions\Numerics\" />
     <Folder Include="Extensions\Text\" />
     <Folder Include="Extensions\Utils\" />
     <Folder Include="Collections\" />
