@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['defaultculture_251',['DefaultCulture',['../class_netxtendable_1_1_text_1_1_string_extensions.html#a7fa0df05d754d7d24e102023f4940919',1,'Netxtendable::Text::StringExtensions']]]
+  ['defaultculture_344',['DefaultCulture',['../class_netxtendable_1_1_netxtendable_config.html#a07398b0a3627c79c7a381f3d5136bbc9',1,'Netxtendable::NetxtendableConfig']]]
 ];

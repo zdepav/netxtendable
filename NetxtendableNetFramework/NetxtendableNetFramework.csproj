@@ -16,12 +16,13 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NET_FRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8</LangVersion>
+    <DocumentationFile>bin\Debug\Netxtendable.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8</LangVersion>
+    <DocumentationFile>bin\Release\Netxtendable.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,42 +46,57 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Netxtendable\Collections\IEnumerableExtensions.cs">
-      <Link>Collections\IEnumerableExtensions.cs</Link>
+    <Compile Include="..\Netxtendable\Collections\Trie.cs">
+      <Link>Collections\Trie.cs</Link>
     </Compile>
-    <Compile Include="..\Netxtendable\Collections\IEnumerableExtensions.Deconstruct.cs">
-      <Link>Collections\IEnumerableExtensions.Deconstruct.cs</Link>
+    <Compile Include="..\Netxtendable\Extensions\Collections\IEnumerableExtensions.cs">
+      <Link>Extensions\Collections\IEnumerableExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Netxtendable\Collections\IListExtensions.cs">
-      <Link>Collections\IListExtensions.cs</Link>
+    <Compile Include="..\Netxtendable\Extensions\Collections\IEnumerableExtensions.Deconstruct.cs">
+      <Link>Extensions\Collections\IEnumerableExtensions.Deconstruct.cs</Link>
     </Compile>
-    <Compile Include="..\Netxtendable\Collections\TupleExtensions.cs">
-      <Link>Collections\TupleExtensions.cs</Link>
+    <Compile Include="..\Netxtendable\Extensions\Collections\IListExtensions.cs">
+      <Link>Extensions\Collections\IListExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Netxtendable\Collections\ValueTupleExtensions.cs">
-      <Link>Collections\ValueTupleExtensions.cs</Link>
+    <Compile Include="..\Netxtendable\Extensions\Collections\TupleExtensions.cs">
+      <Link>Extensions\Collections\TupleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\Extensions\Collections\ValueTupleExtensions.cs">
+      <Link>Extensions\Collections\ValueTupleExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Netxtendable\EnumerableExtras.cs">
       <Link>EnumerableExtras.cs</Link>
     </Compile>
-    <Compile Include="..\Netxtendable\Text\EncodingExtensions.cs">
-      <Link>Text\EncodingExtensions.cs</Link>
+    <Compile Include="..\Netxtendable\Extensions\Text\CharExtensions.cs">
+      <Link>Extensions\Text\CharExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Netxtendable\Text\Int32Extensions.cs">
-      <Link>Text\Int32Extensions.cs</Link>
+    <Compile Include="..\Netxtendable\Extensions\Text\EncodingExtensions.cs">
+      <Link>Extensions\Text\EncodingExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Netxtendable\Text\StringExtensions.cs">
-      <Link>Text\StringExtensions.cs</Link>
+    <Compile Include="..\Netxtendable\Extensions\Text\Int32Extensions.cs">
+      <Link>Extensions\Text\Int32Extensions.cs</Link>
     </Compile>
-    <Compile Include="..\Netxtendable\Utils\RandomExtensions.cs">
-      <Link>Utils\RandomExtensions.cs</Link>
+    <Compile Include="..\Netxtendable\Extensions\Text\StringExtensions.cs">
+      <Link>Extensions\Text\StringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\Extensions\Utils\RandomExtensions.cs">
+      <Link>Extensions\Utils\RandomExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Netxtendable\NetxtendableConfig.cs">
+      <Link>NetxtendableConfig.cs</Link>
     </Compile>
     <Compile Include="assembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\LICENSE.txt">
+      <Link>LICENSE.txt</Link>
+    </Content>
+  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"C:\My Program Files\bin\nuget.exe" pack "$(ProjectPath)" -Prop Configuration=$(ConfigurationName)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -45,25 +45,25 @@ namespace NetxtendableCodeGen {
                 sw.WriteLine();
                 sw.WriteLine(
                     "        /// <summary>Creates an array using items from <paramref name=\"t\"/" +
-                    ">.</summary>"
+                    "></summary>"
                 );
                 sw.WriteLine(
-                    "        /// <typeparam name=\"T\">Type of items in <paramref name=\"t\"/>.</" +
+                    "        /// <typeparam name=\"T\">Type of items in <paramref name=\"t\"/></" +
                     "typeparam>"
                 );
                 sw.WriteLine(
                     "        /// <param name=\"t\">Tuple whose items will be inserted into the " +
-                    "array.</param>"
+                    "array</param>"
                 );
                 sw.WriteLine("        /// <returns>");
                 sw.WriteLine(
                     $"        /// Array of size {n} whose elements are items of <paramref name=\"" +
-                    "t\"/>."
+                    "t\"/>"
                 );
                 sw.WriteLine("        /// </returns>");
                 if (!valueTuple) {
                     sw.WriteLine("        /// <exception cref=\"ArgumentNullException\">");
-                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null.");
+                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null");
                     sw.WriteLine("        /// </exception>");
                 }
                 sw.WriteLine(
@@ -90,26 +90,26 @@ namespace NetxtendableCodeGen {
             for (var n = 2; n < 8; ++n) {
                 sw.WriteLine();
                 sw.WriteLine(
-                    "        /// <summary>Creates a list using items from <paramref name=\"t\"/>." +
+                    "        /// <summary>Creates a list using items from <paramref name=\"t\"/>" +
                     "</summary>"
                 );
                 sw.WriteLine(
-                    "        /// <typeparam name=\"T\">Type of items in <paramref name=\"t\"/>.</" +
+                    "        /// <typeparam name=\"T\">Type of items in <paramref name=\"t\"/></" +
                     "typeparam>"
                 );
                 sw.WriteLine(
                     "        /// <param name=\"t\">Tuple whose items will be inserted into the " +
-                    "list.</param>"
+                    "list</param>"
                 );
                 sw.WriteLine("        /// <returns>");
                 sw.WriteLine(
                     $"        /// <see cref=\"List{{T}}\"/> of size {n} whose elements are items " +
-                    "of <paramref name=\"t\"/>."
+                    "of <paramref name=\"t\"/>"
                 );
                 sw.WriteLine("        /// </returns>");
                 if (!valueTuple) {
                     sw.WriteLine("        /// <exception cref=\"ArgumentNullException\">");
-                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null.");
+                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null");
                     sw.WriteLine("        /// </exception>");
                 }
                 sw.WriteLine(
@@ -136,26 +136,26 @@ namespace NetxtendableCodeGen {
             for (var n = 2; n < 8; ++n) {
                 sw.WriteLine();
                 sw.WriteLine(
-                    "        /// <summary>Creates a set using items from <paramref name=\"t\"/>.<" +
+                    "        /// <summary>Creates a set using items from <paramref name=\"t\"/><" +
                     "/summary>"
                 );
                 sw.WriteLine(
-                    "        /// <typeparam name=\"T\">Type of items in <paramref name=\"t\"/>.</" +
+                    "        /// <typeparam name=\"T\">Type of items in <paramref name=\"t\"/></" +
                     "typeparam>"
                 );
                 sw.WriteLine(
                     "        /// <param name=\"t\">Tuple whose items will be inserted into the " +
-                    "set.</param>"
+                    "set</param>"
                 );
                 sw.WriteLine("        /// <returns>");
                 sw.WriteLine(
                     $"        /// <see cref=\"HashSet{{T}}\"/> of size {n} whose elements are " +
-                    "items of <paramref name=\"t\"/>."
+                    "items of <paramref name=\"t\"/>"
                 );
                 sw.WriteLine("        /// </returns>");
                 if (!valueTuple) {
                     sw.WriteLine("        /// <exception cref=\"ArgumentNullException\">");
-                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null.");
+                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null");
                     sw.WriteLine("        /// </exception>");
                 }
                 sw.WriteLine(
@@ -182,32 +182,32 @@ namespace NetxtendableCodeGen {
                 sw.WriteLine();
                 sw.WriteLine(
                     "        /// <summary>Creates a dictionary using items from <paramref name=\"" +
-                    "t\"/>.</summary>"
+                    "t\"/></summary>"
                 );
                 sw.WriteLine(
                     "        /// <typeparam name=\"K\">Type of keys in key-value pairs in <" +
-                    "paramref name=\"t\"/>.</typeparam>"
+                    "paramref name=\"t\"/></typeparam>"
                 );
                 sw.WriteLine("        /// <typeparam name=\"V\">");
                 sw.WriteLine(
-                    "        /// Type of values in key-value pairs in <paramref name=\"t\"/>."
+                    "        /// Type of values in key-value pairs in <paramref name=\"t\"/>"
                 );
                 sw.WriteLine("        /// </typeparam>");
                 sw.WriteLine("        /// <param name=\"t\">");
                 sw.WriteLine(
                     "        /// Tuple with key-value pairs that will be inserted into the " +
-                    "dictionary."
+                    "dictionary"
                 );
                 sw.WriteLine("        /// </param>");
                 sw.WriteLine("        /// <returns>");
                 sw.WriteLine(
                     $"        /// <see cref=\"Dictionary{{K,V}}\"/> of size {n} whose elements " +
-                    "are items of <paramref name=\"t\"/>."
+                    "are items of <paramref name=\"t\"/>"
                 );
                 sw.WriteLine("        /// </returns>");
                 if (!valueTuple) {
                     sw.WriteLine("        /// <exception cref=\"ArgumentNullException\">");
-                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null.");
+                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null");
                     sw.WriteLine("        /// </exception>");
                 }
                 sw.WriteLine("        public static Dictionary<K, V> ToDictionary<K, V>(");
@@ -235,25 +235,63 @@ namespace NetxtendableCodeGen {
             }
             for (var n = 2; n < 8; ++n) {
                 sw.WriteLine();
+                sw.WriteLine("        #if NET_5");
                 sw.WriteLine(
-                    "        /// <summary>Enumerates items in <paramref name=\"t\"/>.</summary>"
+                    "        /// <summary>Enumerates items in <paramref name=\"t\"/></summary>"
                 );
                 sw.WriteLine(
-                    "        /// <typeparam name=\"T\">Type of items in <paramref name=\"t\"/>.</" +
+                    "        /// <typeparam name=\"T\">Type of items in <paramref name=\"t\"/></" +
                     "typeparam>"
                 );
                 sw.WriteLine(
-                    "        /// <param name=\"t\">Tuple whose items will be enumerated.</param>"
+                    "        /// <param name=\"t\">Tuple whose items will be enumerated</param>"
                 );
                 sw.WriteLine("        /// <returns>");
                 sw.WriteLine(
                     "        /// <see cref=\"IEnumerable{T}\"/> with items of <paramref name=\"t" +
-                    "\"/>."
+                    "\"/>"
                 );
                 sw.WriteLine("        /// </returns>");
                 if (!valueTuple) {
                     sw.WriteLine("        /// <exception cref=\"ArgumentNullException\">");
-                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null.");
+                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null");
+                    sw.WriteLine("        /// </exception>");
+                }
+                sw.WriteLine(
+                    $@"        public static IEnumerator<T> GetEnumerator<T>(this {type}<{
+                            string.Join(", ", Enumerable.Repeat('T', n))
+                        }> t) {{"
+                );
+                if (!valueTuple) {
+                    sw.WriteLine("            if (t is null) {");
+                    sw.WriteLine("                throw new ArgumentNullException(nameof(t));");
+                    sw.WriteLine("            }");
+                }
+                for (var i = 1; i <= n; ++i) {
+                    sw.WriteLine($"            yield return t.Item{i};");
+                }
+                sw.WriteLine("        }");
+                sw.WriteLine("        #endif");
+                sw.WriteLine();
+                sw.WriteLine(
+                    "        /// <summary>Enumerates items in <paramref name=\"t\"/></summary>"
+                );
+                sw.WriteLine(
+                    "        /// <typeparam name=\"T\">Type of items in <paramref name=\"t\"/></" +
+                    "typeparam>"
+                );
+                sw.WriteLine(
+                    "        /// <param name=\"t\">Tuple whose items will be enumerated</param>"
+                );
+                sw.WriteLine("        /// <returns>");
+                sw.WriteLine(
+                    "        /// <see cref=\"IEnumerable{T}\"/> with items of <paramref name=\"t" +
+                    "\"/>"
+                );
+                sw.WriteLine("        /// </returns>");
+                if (!valueTuple) {
+                    sw.WriteLine("        /// <exception cref=\"ArgumentNullException\">");
+                    sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null");
                     sw.WriteLine("        /// </exception>");
                 }
                 sw.WriteLine(
@@ -275,46 +313,71 @@ namespace NetxtendableCodeGen {
 
         private static void GenereateIListExtensionsClass() {
             using var sw = new StreamWriter(
-                Path.Combine(targetDirectory, "Collections", "IListExtensions.cs")
+                Path.Combine(targetDirectory, "Extensions", "Collections", "IListExtensions.cs")
             ) {
                 NewLine = "\n"
             };
             sw.WriteLine("#nullable enable");
             sw.WriteLine("using System;");
             sw.WriteLine("using System.Collections.Generic;");
+            sw.WriteLine("using System.Linq;");
             sw.WriteLine();
             sw.WriteLine("// GENERATED CODE - DO NOT MODIFY");
             sw.WriteLine();
-            sw.WriteLine("namespace Netxtendable.Collections {");
+            sw.WriteLine("namespace Netxtendable.Extensions.Collections {");
             sw.WriteLine();
             sw.WriteLine(
                 "    /// <summary>Class with extension methods for <see cref=\"IList{T}\"/></" +
                 "summary>"
             );
             sw.WriteLine("    public static class IListExtensions {");
+            sw.WriteLine();
+            sw.WriteLine(
+                "        /// <summary>Enumerates valid indexes for the given list</summary>"
+            );
+            sw.WriteLine(
+                "        /// <typeparam name=\"T\">Type of items in <paramref name=\"list\"/>" +
+                "</typeparam>"
+            );
+            sw.WriteLine("        /// <param name=\"list\">List to use</param>");
+            sw.WriteLine("        /// <exception cref=\"ArgumentNullException\">");
+            sw.WriteLine("        /// Thrown when <paramref name=\"list\"/> is null");
+            sw.WriteLine("        /// </exception>");
+            sw.WriteLine("        /// <returns>");
+            sw.WriteLine(
+                "        /// <see name=\"IEnumerable{T}\"/> with all valid indexes for the given" +
+                " list"
+            );
+            sw.WriteLine("        /// </returns>");
+            sw.WriteLine("        public static IEnumerable<int> Indices<T>(this IList<T> list) {");
+            sw.WriteLine("            if (list is null) {");
+            sw.WriteLine("                throw new ArgumentNullException(nameof(list));");
+            sw.WriteLine("            }");
+            sw.WriteLine("            return Enumerable.Range(0, list.Count);");
+            sw.WriteLine("        }");
             for (var n = 2; n < 8; ++n) {
                 sw.WriteLine();
                 sw.WriteLine(
                     $"        /// <summary>Extracts first {n} values from <paramref name=\"list\"" +
-                    "/>.</summary>"
+                    "/></summary>"
                 );
                 sw.WriteLine(
                     "        /// <typeparam name=\"T\">Type of items in <paramref name=\"list\"/>" +
-                    ".</typeparam>"
+                    "</typeparam>"
                 );
-                sw.WriteLine("        /// <param name=\"list\">List to deconstruct.</param>");
+                sw.WriteLine("        /// <param name=\"list\">List to deconstruct</param>");
                 for (var i = 1; i <= n; ++i) {
                     sw.WriteLine(
                         $"        /// <param name=\"item{i}\">{NthLongCapitalized(i)} output item" +
-                        ".</param>"
+                        "</param>"
                     );
                 }
                 sw.WriteLine("        /// <exception cref=\"ArgumentNullException\">");
-                sw.WriteLine("        /// Thrown when <paramref name=\"list\"/> is null.");
+                sw.WriteLine("        /// Thrown when <paramref name=\"list\"/> is null");
                 sw.WriteLine("        /// </exception>");
                 sw.WriteLine("        /// <exception cref=\"InvalidOperationException\">");
                 sw.WriteLine(
-                    "        /// Thrown when <paramref name=\"list\"/> does not have enought items."
+                    "        /// Thrown when <paramref name=\"list\"/> does not have enought items"
                 );
                 sw.WriteLine("        /// </exception>");
                 sw.WriteLine("        public static void Deconstruct<T>(");
@@ -343,7 +406,12 @@ namespace NetxtendableCodeGen {
 
         private static void GenereateIEnumerableExtensionsClass() {
             using var sw = new StreamWriter(
-                Path.Combine(targetDirectory, "Collections", "IEnumerableExtensions.Deconstruct.cs")
+                Path.Combine(
+                    targetDirectory,
+                    "Extensions",
+                    "Collections",
+                    "IEnumerableExtensions.Deconstruct.cs"
+                )
             ) {
                 NewLine = "\n"
             };
@@ -353,7 +421,7 @@ namespace NetxtendableCodeGen {
             sw.WriteLine();
             sw.WriteLine("// GENERATED CODE - DO NOT MODIFY");
             sw.WriteLine();
-            sw.WriteLine("namespace Netxtendable.Collections {");
+            sw.WriteLine("namespace Netxtendable.Extensions.Collections {");
             sw.WriteLine();
             sw.WriteLine(
                 "    /// <summary>Class with extension methods for <see cref=\"IEnumerable{T}\"/>" +
@@ -364,20 +432,20 @@ namespace NetxtendableCodeGen {
                 sw.WriteLine();
                 sw.WriteLine(
                     $"        /// <summary>Extracts first {n} values from <paramref name=\"" +
-                    "enumerable\"/>.</summary>"
+                    "enumerable\"/></summary>"
                 );
                 sw.WriteLine(
                     "        /// <typeparam name=\"T\">Type of items in <paramref name=\"" +
-                    "enumerable\"/>.</typeparam>"
+                    "enumerable\"/></typeparam>"
                 );
                 sw.WriteLine(
                     "        /// <param name=\"enumerable\"><see cref=\"IEnumerable{T}\"/> to " +
-                    "deconstruct.</param>"
+                    "deconstruct</param>"
                 );
                 for (var i = 1; i <= n; ++i) {
                     sw.WriteLine(
                         $"        /// <param name=\"item{i}\">{NthLongCapitalized(i)} output item" +
-                        ".</param>"
+                        "</param>"
                     );
                 }
                 sw.WriteLine("        /// <exception cref=\"ArgumentNullException\">");
@@ -418,7 +486,7 @@ namespace NetxtendableCodeGen {
 
         private static void GenereateTupleExtensionsClass() {
             using var sw = new StreamWriter(
-                Path.Combine(targetDirectory, "Collections", "TupleExtensions.cs")
+                Path.Combine(targetDirectory, "Extensions", "Collections", "TupleExtensions.cs")
             ) {
                 NewLine = "\n"
             };
@@ -428,7 +496,7 @@ namespace NetxtendableCodeGen {
             sw.WriteLine();
             sw.WriteLine("// GENERATED CODE - DO NOT MODIFY");
             sw.WriteLine();
-            sw.WriteLine("namespace Netxtendable.Collections {");
+            sw.WriteLine("namespace Netxtendable.Extensions.Collections {");
             sw.WriteLine();
             sw.WriteLine(
                 "    /// <summary>Class with extension methods for <see cref=\"Tuple\"/></summary>"
@@ -436,22 +504,22 @@ namespace NetxtendableCodeGen {
             sw.WriteLine("    public static class TupleExtensions {");
             for (var n = 2; n < 8; ++n) {
                 sw.WriteLine();
-                sw.WriteLine("        /// <summary>Deconstructs <paramref name=\"t\"/>.</summary>");
+                sw.WriteLine("        /// <summary>Deconstructs <paramref name=\"t\"/></summary>");
                 for (var i = 1; i <= n; ++i) {
                     sw.WriteLine(
                         $"        /// <typeparam name=\"T{i}\">Type of {NthLong(i)} item in " +
-                        "<paramref name=\"t\"/>.</typeparam>"
+                        "<paramref name=\"t\"/></typeparam>"
                     );
                 }
-                sw.WriteLine("        /// <param name=\"t\">Tuple to deconstruct.</param>");
+                sw.WriteLine("        /// <param name=\"t\">Tuple to deconstruct</param>");
                 for (var i = 1; i <= n; ++i) {
                     sw.WriteLine(
                         $"        /// <param name=\"item{i}\">{NthLongCapitalized(i)} output " +
-                        "item.</param>"
+                        "item</param>"
                     );
                 }
                 sw.WriteLine("        /// <exception cref=\"ArgumentNullException\">");
-                sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null.");
+                sw.WriteLine("        /// Thrown when <paramref name=\"t\"/> is null");
                 sw.WriteLine("        /// </exception>");
                 sw.WriteLine(
                     $@"        public static void Deconstruct<{
@@ -482,7 +550,12 @@ namespace NetxtendableCodeGen {
 
         private static void GenereateValueTupleExtensionsClass() {
             using var sw = new StreamWriter(
-                Path.Combine(targetDirectory, "Collections", "ValueTupleExtensions.cs")
+                Path.Combine(
+                    targetDirectory,
+                    "Extensions",
+                    "Collections",
+                    "ValueTupleExtensions.cs"
+                )
             ) {
                 NewLine = "\n"
             };
@@ -492,7 +565,7 @@ namespace NetxtendableCodeGen {
             sw.WriteLine();
             sw.WriteLine("// GENERATED CODE - DO NOT MODIFY");
             sw.WriteLine();
-            sw.WriteLine("namespace Netxtendable.Collections {");
+            sw.WriteLine("namespace Netxtendable.Extensions.Collections {");
             sw.WriteLine();
             sw.WriteLine(
                 "    /// <summary>Class with extension methods for <see cref=\"Tuple\"/></summary>"
@@ -710,11 +783,24 @@ namespace NetxtendableCodeGen {
                 }
                 sw.WriteLine("        }");
             }
+
+
+
+
+
+
+
+
         }
 
         private static void GenereateIListExtensionsClassTests() {
             using var sw = new StreamWriter(
-                Path.Combine(targetTestsDirectory, "Collections", "IListExtensionsTests.cs")
+                Path.Combine(
+                    targetTestsDirectory,
+                    "Extensions",
+                    "Collections",
+                    "IListExtensionsTests.cs"
+                )
             ) {
                 NewLine = "\n"
             };
@@ -724,7 +810,7 @@ namespace NetxtendableCodeGen {
             sw.WriteLine();
             sw.WriteLine("// GENERATED CODE - DO NOT MODIFY");
             sw.WriteLine();
-            sw.WriteLine("namespace Netxtendable.Collections.Tests {");
+            sw.WriteLine("namespace Netxtendable.Extensions.Collections.Tests {");
             sw.WriteLine();
             sw.WriteLine("    [TestClass]");
             sw.WriteLine("    public class IListExtensionsTests {");
@@ -772,6 +858,7 @@ namespace NetxtendableCodeGen {
             using var sw = new StreamWriter(
                 Path.Combine(
                     targetTestsDirectory,
+                    "Extensions",
                     "Collections",
                     "IEnumerableExtensionsTests.Deconstruct.cs"
                 )
@@ -785,7 +872,7 @@ namespace NetxtendableCodeGen {
             sw.WriteLine();
             sw.WriteLine("// GENERATED CODE - DO NOT MODIFY");
             sw.WriteLine();
-            sw.WriteLine("namespace Netxtendable.Collections.Tests {");
+            sw.WriteLine("namespace Netxtendable.Extensions.Collections.Tests {");
             sw.WriteLine();
             sw.WriteLine("    public partial class IEnumerableExtensionsTests {");
             for (var n = 2; n < 8; ++n) {
@@ -825,7 +912,12 @@ namespace NetxtendableCodeGen {
 
         private static void GenereateTupleExtensionsClassTests() {
             using var sw = new StreamWriter(
-                Path.Combine(targetTestsDirectory, "Collections", "TupleExtensionsTests.cs")
+                Path.Combine(
+                    targetTestsDirectory,
+                    "Extensions",
+                    "Collections",
+                    "TupleExtensionsTests.cs"
+                )
             ) {
                 NewLine = "\n"
             };
@@ -836,7 +928,7 @@ namespace NetxtendableCodeGen {
             sw.WriteLine();
             sw.WriteLine("// GENERATED CODE - DO NOT MODIFY");
             sw.WriteLine();
-            sw.WriteLine("namespace Netxtendable.Collections.Tests {");
+            sw.WriteLine("namespace Netxtendable.Extensions.Collections.Tests {");
             sw.WriteLine();
             sw.WriteLine("    [TestClass]");
             sw.WriteLine("    public class TupleExtensionsTests {");
@@ -878,7 +970,12 @@ namespace NetxtendableCodeGen {
 
         private static void GenereateValueTupleExtensionsClassTests() {
             using var sw = new StreamWriter(
-                Path.Combine(targetTestsDirectory, "Collections", "ValueTupleExtensionsTests.cs")
+                Path.Combine(
+                    targetTestsDirectory,
+                    "Extensions",
+                    "Collections",
+                    "ValueTupleExtensionsTests.cs"
+                )
             ) {
                 NewLine = "\n"
             };
@@ -888,7 +985,7 @@ namespace NetxtendableCodeGen {
             sw.WriteLine();
             sw.WriteLine("// GENERATED CODE - DO NOT MODIFY");
             sw.WriteLine();
-            sw.WriteLine("namespace Netxtendable.Collections.Tests {");
+            sw.WriteLine("namespace Netxtendable.Extensions.Collections.Tests {");
             sw.WriteLine();
             sw.WriteLine("    [TestClass]");
             sw.WriteLine("    public class ValueTupleExtensionsTests {");

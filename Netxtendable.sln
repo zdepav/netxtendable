@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetxtendableCodeGen", "Netx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetxtendableNetFramework", "NetxtendableNetFramework\NetxtendableNetFramework.csproj", "{D53BD75E-D232-41FB-8B93-B1A7DA45C407}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetxtendableNet5", "NetxtendableNet5\NetxtendableNet5.csproj", "{B86028D1-F841-4203-961D-1684F0ADD15C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D53BD75E-D232-41FB-8B93-B1A7DA45C407}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D53BD75E-D232-41FB-8B93-B1A7DA45C407}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D53BD75E-D232-41FB-8B93-B1A7DA45C407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B86028D1-F841-4203-961D-1684F0ADD15C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B86028D1-F841-4203-961D-1684F0ADD15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B86028D1-F841-4203-961D-1684F0ADD15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B86028D1-F841-4203-961D-1684F0ADD15C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

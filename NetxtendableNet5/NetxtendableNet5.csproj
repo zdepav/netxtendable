@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/zdepav/netxtendable/tree/master</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/zdepav/netxtendable/tree/master</RepositoryUrl>
+    <Authors>Zdeněk Pavlátka</Authors>
+    <Company />
+    <Description>A .NET library with extension functions for some standard types.</Description>
+    <Copyright>Copyright © Zdeněk Pavlátka 2021</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <Version>5.0.0</Version>
+    <AssemblyVersion>5.0.0.0</AssemblyVersion>
+    <FileVersion>5.0.0.0</FileVersion>
+    <AssemblyName>Netxtendable</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;NET_CORE;NET_5</DefineConstants>
+    <DocumentationFile>bin\Debug\NetxtendableNet5.xml</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;NET_CORE;NET_5</DefineConstants>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>bin\Release\NetxtendableNet5.xml</DocumentationFile>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Netxtendable\Collections\Trie.cs" Link="Collections\Trie.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Collections\IEnumerableExtensions.cs" Link="Extensions\Collections\IEnumerableExtensions.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Collections\IEnumerableExtensions.Deconstruct.cs" Link="Extensions\Collections\IEnumerableExtensions.Deconstruct.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Collections\IListExtensions.cs" Link="Extensions\Collections\IListExtensions.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Collections\TupleExtensions.cs" Link="Extensions\Collections\TupleExtensions.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Collections\ValueTupleExtensions.cs" Link="Extensions\Collections\ValueTupleExtensions.cs" />
+    <Compile Include="..\Netxtendable\EnumerableExtras.cs" Link="EnumerableExtras.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Text\CharExtensions.cs" Link="Extensions\Text\CharExtensions.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Text\EncodingExtensions.cs" Link="Extensions\Text\EncodingExtensions.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Text\Int32Extensions.cs" Link="Extensions\Text\Int32Extensions.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Text\StringExtensions.cs" Link="Extensions\Text\StringExtensions.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Utils\RandomExtensions.cs" Link="Extensions\Utils\RandomExtensions.cs" />
+    <Compile Include="..\Netxtendable\Extensions\Utils\RangeExtensions.cs" Link="Extensions\Utils\RangeExtensions.cs" />
+    <Compile Include="..\Netxtendable\NetxtendableConfig.cs" Link="NetxtendableConfig.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\Collections\" />
+    <Folder Include="Extensions\Text\" />
+    <Folder Include="Extensions\Utils\" />
+    <Folder Include="Collections\" />
+  </ItemGroup>
+
+</Project>

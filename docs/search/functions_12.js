@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zipwithnext_3c_20t_20_3e_249',['ZipWithNext&lt; T &gt;',['../class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#ab6781423fddb8d818f4e23e5ab80dafd',1,'Netxtendable::Collections::IEnumerableExtensions']]]
+  ['xmlescape_337',['XmlEscape',['../class_netxtendable_1_1_extensions_1_1_text_1_1_string_extensions.html#a80fe28d30b5e84f2d8f83e3aa49413ae',1,'Netxtendable::Extensions::Text::StringExtensions']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['list_3c_20t_20_3e_250',['List&lt; T &gt;',['../class_netxtendable_1_1_collections_1_1_i_enumerable_extensions.html#a669584ab525ccd45d37ea88070d854fd',1,'Netxtendable::Collections::IEnumerableExtensions']]]
+  ['count_339',['Count',['../class_netxtendable_1_1_collections_1_1_trie.html#a4322e39024c3b86a19e8032e72931ec9',1,'Netxtendable::Collections::Trie']]]
 ];
